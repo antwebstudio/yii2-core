@@ -1,0 +1,54 @@
+// Setup class behaviors
+// Type
+
+	public function rules() {
+		return [
+			[['dynamicAttributeSettings'], 'safe'],
+		];
+	}
+	
+	public function behaviors() {
+		return [
+            [
+                'class' => \ant\attribute\behaviors\DynamicAttributeType::class,
+            ],
+		];
+	}
+
+// Product
+	
+	public function rules() {
+		return [
+			[['dynamicAttributes'], 'safe'],
+		];
+	}
+	
+	public function behaviors() {
+		return [
+            [
+                'class' => \ant\attribute\behaviors\DynamicAttribute::class,
+				'relation' => 'type',
+				'relationModelClass' => DynamicAttributeCestTestModel::class, // Note that this is relation model class, not self::class
+            ],
+		];
+	}
+	
+	public function getType() {
+		return $this->hasOne(DynamicAttributeTypeModel::class, ['id' => 'test_id']);
+	}
+	
+
+// Setup dynamic fields
+$type = new DynamicAttributeTypeModel;
+if (!$type->save()) throw new \Exception(print_r($type->errors, 1));
+
+$type->saveDynamicAttributes([
+	[
+		'class' => \ant\dynamicform\fieldtypes\classes\TextField::class,
+		'name' => $name,
+		'label' => $label,
+	],
+]);
+
+$model = new DynamicAttributeModel(['type_id' => $type->id]);
+$model->attributes = ['dynamicAttributes' => [$name => $value]];

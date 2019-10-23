@@ -1,0 +1,37 @@
+- add public attribute to Search form model
+
+public $created_at_range;
+public $created_at_start;
+public $created_at_end;
+
+- add range attribute to rules as safe attribute
+
+[['created_at_range'], 'safe'],
+	
+- add to gridview
+
+'filter' => \kartik\daterange\DateRangePicker::widget([
+	'model' => $searchModel,
+	'attribute' => 'created_at_range',
+	'convertFormat' => true,
+	'hideInput' => true,
+	'pluginOptions' => [
+		'locale' => [
+			'format' => 'Y-m-d'
+		],
+		'allowClear' => true
+	],
+]),
+
+- add behavior to Search form model
+
+[
+	'class' => \ant\behaviors\DateTimeRangeBehavior::className(),
+	'attribute' => 'created_at_range',
+	'dateStartAttribute' => 'created_at_start',
+	'dateEndAttribute' => 'created_at_end',
+],
+
+- add filter to Search form model's query
+
+$query->andFilterWhere(['between', 'date(payment.created_at)', $this->created_at_start, $this->created_at_end]);

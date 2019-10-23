@@ -1,0 +1,82 @@
+{
+    "name": "antweb/yii2-core",
+    "description": "Core library",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Hui Yang",
+            "email": "chy1988@antwebstudio.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "~2.0.0",
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+		"shaqman/yii2-queue-mailer": "*",
+		"vlucas/phpdotenv": "^2.0",
+        "yii2-starter-kit/yii2-file-kit": "*",
+        "voskobovich/yii2-linker-behavior": "^4.0",
+        "inspirenmy/php-math-parser": "*",
+		"yii2mod/yii2-timezone": "*",
+        "creocoder/yii2-nested-sets": "^0.9.0",
+        "yii2tech/ar-softdelete": "^1.0",
+        "tuyakhov/yii2-notifications": "*",
+        "cebe/yii2-lifecycle-behavior": "^2.0",
+		"hashids/hashids": "2.0",
+        "brussens/yii2-maintenance-mode": "0.2.6"
+	},
+    "require-dev": {
+        "phpstan/phpstan": "^0.10.3",
+        "yiisoft/yii2-codeception": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "codeception/codeception": "^3.0"
+	},
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+	],
+	"scripts": {
+		"post-install-cmd": "@setup",
+		"migrate-test" : "@php tests/bin/yii migrate --interactive=0 --migrationPath=@yii/rbac/migrations,@common/migrations/db,@tests/migrations/db",
+		"test" : [
+			"@setup", 
+			"@run-test"
+		],
+		"yii": "@php ./tests/bin/yii",
+		"setup": [
+			"@php ./tests/bin/yii module/enable category",
+			"@migrate-test"
+		],
+		"run-test" : "@php ./vendor/codeception/codeception/codecept run unit",
+		
+        "stan": "@php vendor/bin/phpstan analyse src tests --level=7 --autoload-file=vendor/yiisoft/yii2/Yii.php",
+        "ci": [
+            "@test",
+            "@stan"
+        ],
+
+        "win-test": ".\\vendor\\bin\\codecept run",
+        "win-stan": ".\\vendor\\bin\\phpstan analyse src tests --level=7 --autoload-file=vendor/yiisoft/yii2/Yii.php",
+        "win-ci": [
+            "@win-test",
+            "@win-stan"
+        ]
+	},
+    "config": {
+        "github-protocols": [
+			"https,ssh"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+			"ant\\": "src",
+			"tests\\" : "tests"
+		}
+    }
+}

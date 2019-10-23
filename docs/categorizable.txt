@@ -1,0 +1,15 @@
+1. Add behavior to ActiveRecord
+
+[
+	'class' => 'ant\category\behaviors\CategorizableBehavior',
+	'attribute' => 'grade',
+	'type' => 'grade',
+],
+
+2. Add a relation to ActiveRecord. eg: getGrade for grade
+
+public function getGrade() {
+	return $this->getCategoriesRelation('grade');
+}
+
+3. Add attribute (eg: "grade") as safe in rules()

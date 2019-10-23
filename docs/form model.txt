@@ -1,0 +1,98 @@
+
+
+
+new XXXFormModel ([
+	'models' => [
+		'aaa' => [
+			'class' => '',
+		],
+	],
+	'optionalModels' => [
+		'bbb' => [
+			'class' => '',
+		],
+	],
+]);
+
+
+
+// limitation of define optional using ":" , eg:
+// 'modelName:optional' => ['class' => 'ant\contact\models\Contact'],
+// when want to overwrite it with 'modelName' => ['class' => 'ant\contact\models\Contact'],
+
+
+Scenario 1: Basic
+========
+
+$data = [
+	'Model1Class' => [
+		'attribute1' => '',
+		'attribute2' => '',
+	],
+];
+
+$form->field($formModel->getModel('model1'), 'attribute1');
+
+
+Scenario 2: Array
+========
+
+$data = [
+	'Model1Class' => [
+		[
+			'attribute1' => '',
+			'attribute2' => '',
+		],
+		[
+			'attribute1' => '',
+			'attribute2' => '',
+		],
+	],
+];
+
+$form->field($formModel->getModel('model1'), '[]attribute1');
+
+
+Scenario 3: Array but different structure
+========
+
+$data = [
+	'Model1Class' => [
+		'model1' => [
+			[
+				'attribute1' => '',
+				'attribute2' => '',
+			],
+			[
+				'attribute1' => '',
+				'attribute2' => '',
+			],
+		],
+	],
+];
+
+$form->field($formModel->getModel('model1'), '[model1][]attribute1');
+
+
+Scenario 4: Same class for different models
+========
+
+$data = [
+	'Model1Class' => [
+		'model1' => [
+			[
+				'attribute1' => '',
+				'attribute2' => '',
+			],
+		],
+		'model2' => [
+			[
+				'attribute1' => '',
+				'attribute2' => '',
+			],
+		],
+	],
+];
+
+$form->field($formModel->getModel('model1'), '[model1]attribute1');
+

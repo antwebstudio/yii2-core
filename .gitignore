@@ -1,6 +1,5 @@
-assets/*
-!assets/.gitignore
-protected/runtime/*
-!protected/runtime/.gitignore
-protected/data/*.db
-themes/classic/views/
+# Other generated file
+composer.lock
+vendor
+tests/_support/_generated
+tests/_output
