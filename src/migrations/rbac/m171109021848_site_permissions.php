@@ -7,7 +7,7 @@ use ant\rbac\Migration;
 use ant\rbac\Role;
 use ant\rbac\rules\IsOwnModelRule;
 use ant\user\models\UserProfile;
-use frontend\controllers\SiteController;
+use ant\controllers\SiteController;
 
 class m171109021848_site_permissions extends Migration
 {

@@ -5,7 +5,7 @@ return [
     'basePath' => YII_APP_BASE_PATH,
 	'runtimePath' => YII_APP_BASE_PATH.'/runtime/console',
     'bootstrap' => ['log'],
-    'controllerNamespace' => 'console\controllers',
+    'controllerNamespace' => 'ant\console\controllers',
     'controllerMap' => [
         'user' => [
             'class' => 'ant\user\console\controllers\UserController',
@@ -16,7 +16,7 @@ return [
 		'core-migrate' => [
 			'class' => 'ant\moduleManager\console\controllers\MigrateController',
             'migrationPath' => [
-                '@common/migrations/db',
+                '@ant/migrations/db',
                 '@yii/rbac/migrations',
             ],
             'migrationNamespaces' => [
@@ -27,7 +27,7 @@ return [
 		'migrate' => [
 			'class' => 'ant\moduleManager\console\controllers\MigrateController',
             'migrationPath' => [
-                '@common/migrations/db',
+                '@ant/migrations/db',
                 '@yii/rbac/migrations',
 				'@project/migrations/db',
             ],
@@ -40,19 +40,19 @@ return [
 		'rbac-migrate' => [
 			'class' => 'ant\moduleManager\console\controllers\RbacMigrateController',
             'migrationPath' => [
-                '@common/migrations/rbac',
+                '@ant/migrations/rbac',
 				'@project/migrations/rbac',
             ],
             'migrationTable' => '{{%system_rbac_migration}}',
             'migrationNamespaces' => [
                 'ant\moduleManager\migrations\rbac',
 			],
-            'templateFile' => '@common/rbac/views/migration.php'
+            'templateFile' => '@ant/rbac/views/migration.php'
 		],
-        'fixture' => [
+        /*'fixture' => [
 			'class' => 'yii\console\controllers\FixtureController',
             'namespace' => 'tests\codeception\common\fixtures',
-        ],
+        ],*/
 		'serve' => [
 			'class' => 'yii\console\controllers\ServeController',
 			'docroot' => './',

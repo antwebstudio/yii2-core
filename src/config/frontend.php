@@ -105,6 +105,11 @@ $config = [
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],
 					
+					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-event/src' => [
+						'@project/themes/'.env('THEME', 'default').'/views/modules',
+						'@app/themes/'.env('THEME', 'default').'/views/modules',
+					],
+					
 					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-ecommerce/src' => [
 						'@project/themes/'.env('THEME', 'default').'/views/modules',
 						'@app/themes/'.env('THEME', 'default').'/views/modules',

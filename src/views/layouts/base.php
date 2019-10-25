@@ -6,7 +6,7 @@ use yii\bootstrap\NavBar;
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-$this->beginContent('@frontend/views/layouts/_clear.php')
+$this->beginContent('@app/views/layouts/_clear.php')
 ?>
 <div class="wrap">
 

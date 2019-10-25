@@ -7,7 +7,7 @@ use ant\rbac\Migration;
 use ant\rbac\Role;
 use ant\rbac\rules\IsOwnModelRule;
 use ant\user\models\UserProfile;
-use backend\controllers\SettingController;
+//use ant\controllers\SettingController;
 
 class m170622021848_setting_permissions extends Migration
 {
@@ -15,10 +15,10 @@ class m170622021848_setting_permissions extends Migration
 
 	public function init() {
 		$this->permissions = [
-			SettingController::className() => [
+			/*SettingController::className() => [
 				'index' => ['Show all setting', [Role::ROLE_ADMIN]],
 				'build' => ['Build runtime file based on database', [Role::ROLE_ADMIN]],
-			]
+			]*/
 		];
 		parent::init();
 	}

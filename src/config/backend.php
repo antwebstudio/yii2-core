@@ -9,7 +9,7 @@ $config = [
     'controllerNamespace' => 'backend\controllers',
     'modules' => [
 		'moduleManager' => [
-			'class' => 'backend\modules\moduleManager\Module',
+			'class' => 'ant\moduleManager\backend\Module',
 		],
         'cms' => [
             'class' => 'backend\modules\cms\Module',

@@ -13,10 +13,10 @@ class M180522081039_permissions extends Migration
 	public function init()
     {
 		$this->permissions = [
-			\frontend\modules\moduleManager\controllers\DefaultController::className() => [
+			\ant\moduleManager\controllers\DefaultController::className() => [
 				'index' => ['Module manager', [Role::ROLE_DEVELOPER]],
 			],
-			\backend\modules\moduleManager\controllers\DefaultController::className() => [
+			\ant\moduleManager\backend\controllers\DefaultController::className() => [
 				'index' => ['Module manager', [Role::ROLE_DEVELOPER]],
 			],
 		];

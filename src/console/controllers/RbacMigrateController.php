@@ -1,6 +1,6 @@
 <?php
 
-namespace console\controllers;
+namespace ant\console\controllers;
 
 use yii\console\controllers\MigrateController;
 

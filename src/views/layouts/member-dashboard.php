@@ -9,6 +9,6 @@ use yii\bootstrap\NavBar;
 $this->params['sideNav']['items'] = \Yii::$app->menu->getMenu(\common\components\MenuManager::MENU_MEMBER);
 ?>
 
-<?php $this->beginContent('@frontend/views/layouts/left-sidenav.php') ?>
+<?php $this->beginContent('@app/views/layouts/left-sidenav.php') ?>
 	<?= $content ?>
 <?php $this->endContent() ?>

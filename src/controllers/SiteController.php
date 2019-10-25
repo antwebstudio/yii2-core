@@ -30,7 +30,7 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
 			'contact' => [
-				'class' => 'frontend\modules\support\actions\CreateAction',
+				'class' => 'ant\support\actions\CreateAction',
 			],
         ];
     }
