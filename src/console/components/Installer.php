@@ -1,5 +1,5 @@
 <?php
-namespace console\components;
+namespace ant\console\components;
 
 use Yii;
 use yii\helpers\Console;

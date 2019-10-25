@@ -2,57 +2,34 @@
 
 $config = [
     'id' => 'app-frontend',
-    'basePath' => YII_APP_BASE_PATH.'/frontend',
+    'basePath' => YII_APP_BASE_PATH,
 	'runtimePath' => YII_APP_BASE_PATH.'/runtime/frontend',
 	'defaultRoute' => env('DEFAULT_ROUTE', 'site/index'),
 	'bootstrap' => ['maintenanceMode'],
-    'controllerNamespace' => 'frontend\controllers',
+    'controllerNamespace' => 'ant\controllers',
 	'layout' => 'default',
     'modules' => [
 		'moduleManager' => [
-			'class' => 'frontend\modules\moduleManager\Module',
+			'class' => 'ant\moduleManager\Module',
 		],
 		'sandbox' => [
-			'class' => 'frontend\modules\sandbox\Module',
-		],
-        /*'ecommerce' => ['class' => 'frontend\modules\ecommerce\Module'],
-        'cart' => ['class' => 'frontend\modules\cart\Module'],
-        'user' => [
-        	'class' => 'frontend\modules\user\Module',
-        ],*/
-                
+			'class' => 'ant\sandbox\Module',
+		],  
     ],
     'components' => [
-        'moduleManager' => [
-            'class' => 'ant\moduleManager\components\ModuleManager',
-			'moduleAutoloadPaths' => ['@frontend/modules', 
-				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-ecommerce/src/frontend/modules', 
-				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-user/src/frontend/modules',
-				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-user/src',
-				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-core/src/frontend/modules',
-				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-cms/src/frontend/modules',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-importer/src',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-dashboard/src',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-affiliate/src',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-event/src/frontend',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-cart/src/frontend/modules',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-payment/src',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-booking/src',
-			],
-        ],
 		'sandbox' => [
-			'class' => 'frontend\modules\sandbox\components\SandboxManager',
+			'class' => 'ant\sandbox\components\SandboxManager',
 			'gateway' => [
 				'ipay88' => [
-					'class' => 'frontend\modules\sandbox\gateway\ipay88\Sandbox',
+					'class' => 'ant\sandbox\gateway\ipay88\Sandbox',
 					'merchantCode' => 'sandbox',
 					'merchantKey' => 'inspiren',
 					'receiver' => [
 						'default' => [
-							'class' => '\frontend\modules\sandbox\gateway\ipay88\Receiver',
+							'class' => 'ant\sandbox\gateway\ipay88\Receiver',
 						],
 						'requery' => [
-							'class' => '\frontend\modules\sandbox\gateway\ipay88\RequeryReceiver',
+							'class' => 'ant\sandbox\gateway\ipay88\RequeryReceiver',
 							//'reachedDayLimit' => true,
 						],
 					],
@@ -117,7 +94,7 @@ $config = [
                     '@app/views' => [
 						'@project/themes/'.env('THEME', 'default').'/views',
 						'@app/themes/'.env('THEME', 'default').'/views',
-						'@vendor/inspirenmy/yii2-core/src/frontend/views',
+						'@vendor/antweb/yii2-core/src/views',
 					],
                     '@ant' => [
 						'@project/themes/'.env('THEME', 'default').'/views/modules',
@@ -128,46 +105,28 @@ $config = [
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],
 					
-					env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-ecommerce/src/common/modules' => [
+					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-ecommerce/src' => [
 						'@project/themes/'.env('THEME', 'default').'/views/modules',
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],
-					env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-ecommerce/src/frontend/modules' => [
+					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-user/src' => [
 						'@project/themes/'.env('THEME', 'default').'/views/modules',
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],
-					env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-user/src/frontend/modules' => [
+					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-core/src' => [
 						'@project/themes/'.env('THEME', 'default').'/views/modules',
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],
-					env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-core/src/frontend/modules' => [
-						'@project/themes/'.env('THEME', 'default').'/views/modules',
-						'@app/themes/'.env('THEME', 'default').'/views/modules',
-					],
-					env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-cms/src/frontend/modules' => [
+					env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-cms/src' => [
 						'@project/themes/'.env('THEME', 'default').'/views/modules',
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],
 					
-					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-payment/src/common/modules' => [
+					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-payment/src' => [
 						'@project/themes/'.env('THEME', 'default').'/views/modules',
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],
-					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-payment/src/frontend/modules' => [
-						'@project/themes/'.env('THEME', 'default').'/views/modules',
-						'@app/themes/'.env('THEME', 'default').'/views/modules',
-					],
-					
-					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-cart/src/common/modules' => [
-						'@project/themes/'.env('THEME', 'default').'/views/modules',
-						'@app/themes/'.env('THEME', 'default').'/views/modules',
-					],
-					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-cart/src/frontend/modules' => [
-						'@project/themes/'.env('THEME', 'default').'/views/modules',
-						'@app/themes/'.env('THEME', 'default').'/views/modules',
-					],
-					
-					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-subscription/src/common/modules' => [
+					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-cart/src' => [
 						'@project/themes/'.env('THEME', 'default').'/views/modules',
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],

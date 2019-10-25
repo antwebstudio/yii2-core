@@ -1,7 +1,7 @@
 <?php
-namespace console\components;
+namespace ant\console\components;
 
-use console\helpers\Console;
+use ant\console\helpers\Console;
 
 class Controller extends \yii\console\Controller
 {
@@ -10,4 +10,3 @@ class Controller extends \yii\console\Controller
         return Console::silentPrompt($text, $options);
     }
 }
-?>

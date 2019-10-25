@@ -65,15 +65,6 @@ return [
 		'maintenanceMode' => [
 			'class' => 'brussens\maintenance\MaintenanceMode',
 		],
-        'moduleManager' => [
-            'class' => 'ant\moduleManager\components\ModuleManager',
-			'moduleAutoloadPaths' => ['@ant', 
-				'@vendor/inspirenmy/yii2-ecommerce/src/common/modules', 
-				'@vendor/inspirenmy/yii2-user/src/common/modules',
-				'@vendor/inspirenmy/yii2-core/src/common/modules',
-				'@vendor/inspirenmy/yii2-cms/src/common/modules',
-			],
-        ],
         'frontendCache' => [
             'class' => 'yii\caching\FileCache',
             'cachePath' => '@frontend/runtime/cache'

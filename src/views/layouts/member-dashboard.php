@@ -1,0 +1,14 @@
+<?php
+
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+
+/* @var $this \yii\web\View */
+/* @var $content string */
+
+$this->params['sideNav']['items'] = \Yii::$app->menu->getMenu(\common\components\MenuManager::MENU_MEMBER);
+?>
+
+<?php $this->beginContent('@frontend/views/layouts/left-sidenav.php') ?>
+	<?= $content ?>
+<?php $this->endContent() ?>

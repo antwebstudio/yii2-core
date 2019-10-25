@@ -26,7 +26,7 @@ $config = [
     ],
     'components' => [
         'moduleManager' => [
-            'class' => 'ant\moduleManager\components\ModuleManager',
+            'class' => 'ant\moduleManager\ModuleManager',
 			'moduleAutoloadPaths' => ['@backend/modules', 
 				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-ecommerce/src/backend/modules', 
 				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-user/src/backend/modules',
