@@ -1,5 +1,7 @@
 <?php
-$model = new \common\models\ModelClass;
+use ant\models\ModelClass;
+
+$model = new ModelClass;
 ?>
 
 <?= \yii\bootstrap\ButtonDropdown::widget([
@@ -51,11 +53,12 @@ $model = new \common\models\ModelClass;
 	<?php \yii\bootstrap\Alert::end() ?>
 <?php endforeach ?>
 
-<?php foreach (['btn-primary', 'btn-default'] as $class): ?>
+<?php foreach (['btn-primary', 'btn-secondary', 'btn-default'] as $class): ?>
 	<?= \yii\bootstrap\Button::widget([
 		'label' => 'Action',
 		'options' => ['class' => $class],
 	]) ?>
+	<a class="btn <?= $class ?>">Button</a>
 <?php endforeach ?>
 
 <?= \kartik\grid\GridView::widget([
@@ -72,7 +75,7 @@ $model = new \common\models\ModelClass;
 			],
 		])
 	],
-	'dataProvider' => new \yii\data\ActiveDataProvider(['query' => \common\models\ModelClass::find()]),
+	'dataProvider' => new \yii\data\ActiveDataProvider(['query' => ModelClass::find()]),
 	'columns' => [
 		[
 			'header' => 'Action',
@@ -93,7 +96,7 @@ $model = new \common\models\ModelClass;
 ]) ?>
 
 <?= \yii\grid\GridView::widget([
-	'dataProvider' => new \yii\data\ActiveDataProvider(['query' => \common\models\ModelClass::find()]),
+	'dataProvider' => new \yii\data\ActiveDataProvider(['query' => ModelClass::find()]),
 	'columns' => [
 		[
 			'header' => 'Action',

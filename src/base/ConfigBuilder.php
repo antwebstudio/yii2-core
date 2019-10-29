@@ -7,6 +7,7 @@ class ConfigBuilder {
 	const CONSOLE = 'cli-console';
 	const API = 'api';
 	const TEST = 'test';
+	const TEST_FUNCTIONAL = 'test-functional';
 	
 	public function files() {
 		return [
@@ -35,6 +36,10 @@ class ConfigBuilder {
 				//YII_PROJECT_BASE_PATH . '/config/common.php',
 				dirname(__DIR__) . '/config/web-api.php',
 				YII_PROJECT_BASE_PATH . '/config/web-api.php',
+			],
+			self::TEST_FUNCTIONAL => [
+				dirname(__DIR__) . '/config/test.php',
+				YII_PROJECT_BASE_PATH . '/config/test.php',
 			],
 		];
 	}

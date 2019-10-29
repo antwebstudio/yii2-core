@@ -8,6 +8,7 @@ class Bootstrap {
 	const API = 'api';
 	const TEST = 'test';
 	const TEST_ACCEPTANCE = 'test-acceptance';
+	const TEST_FUNCTIONAL = 'test-functional';
 	
 	public $files = [
 		self::FRONTEND => 'web-frontend.php',
@@ -16,6 +17,7 @@ class Bootstrap {
 		self::API => 'api.php',
 		self::TEST => 'test.php',
 		self::TEST_ACCEPTANCE => 'test-acceptance.php',
+		self::TEST_FUNCTIONAL => 'test-functional.php',
 	];
 	
 	public function load($name, $projectPath, $storagePath) {

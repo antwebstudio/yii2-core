@@ -1,6 +1,6 @@
 <?php
 
-return [
+$config = [
 	'bootstrap' => [
 		'timezone',
 	],
@@ -44,3 +44,16 @@ return [
 		//Yii::$app->setTimeZone('Asia/Kuala_Lumpur');
 	},
 ];
+
+
+// Cannot put in common as this will cause console error - console don't have request->getIp
+if (!YII_ENV_TEST && YII_ENV_DEV) {
+    // configuration adjustments for 'dev' environment
+	$config['bootstrap'][] = 'debug';
+	$config['modules']['debug'] = [
+		'class' => 'yii\debug\Module',
+		'allowedIPs' => ['*'],
+	];
+}
+
+return $config;

@@ -79,7 +79,7 @@ $config = [
        ],
         'moduleManager' => [
             'class' => 'ant\moduleManager\ModuleManager',
-			'moduleAutoloadPaths' => ['@ant', 
+			'moduleAutoloadPaths' => ['@ant', '@common/modules',
 				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-cms/src/common/modules',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-ecommerce/src', 
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-user/src',
@@ -93,6 +93,7 @@ $config = [
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-member/src',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-booking/src',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-subscription/src',
+				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-library/src',
 			],
         ],
         'userConfig' => [
@@ -295,7 +296,9 @@ $config = [
         ],*/
     ],
 	'on beforeAction' => function($event) {
-        \Yii::$app->mailer->syncMailer->view = \Yii::$app->view;
+		if (isset(\Yii::$app->mailer->syncMailer)) {
+			\Yii::$app->mailer->syncMailer->view = \Yii::$app->view;
+		}
     },
 ];
 

@@ -2,16 +2,16 @@
 
 $config = [
     'id' => 'app-backend',
-    'basePath' => YII_APP_BASE_PATH.'/backend',
+    'basePath' => YII_APP_BASE_PATH,
 	'runtimePath' => YII_APP_BASE_PATH.'/runtime/backend',
     'bootstrap' => ['log'],
     //'layout' => 'default',
-    'controllerNamespace' => 'backend\controllers',
+    'controllerNamespace' => 'ant\backend\controllers',
     'modules' => [
 		'moduleManager' => [
 			'class' => 'ant\moduleManager\backend\Module',
 		],
-        'cms' => [
+        /*'cms' => [
             'class' => 'backend\modules\cms\Module',
         ],
         'event' => [
@@ -22,7 +22,7 @@ $config = [
         ],
         'payment' => [
             'class' => 'backend\modules\payment\Module',
-        ],
+        ],*/
     ],
     'components' => [
         'moduleManager' => [
@@ -68,11 +68,12 @@ $config = [
             'theme' => [
                 'class' => 'ant\components\Theme',
                 'skin' => 'skin-black',
-                'asset' => '\backend\themes\adminlte\assets\ThemeAsset',
+                'asset' => '\ant\themes\adminlte\assets\ThemeAsset',
                 'pathMap' => [
 					'@app/views' => [
-						'@vendor/inspirenmy/yii2-core/src/backend/themes/adminlte/views',
-						'@vendor/inspirenmy/yii2-core/src/backend/views',
+						'@vendor/antweb/yii2-web/src/themes/adminlte/views',
+						'@vendor/antweb/yii2-web/src/backend/views',
+						'@vendor/antweb/yii2-core/src/views',
 					],
                     '@backend/modules' => '@vendor/inspirenmy/yii2-ecommerce/src/backend/modules',
 					
