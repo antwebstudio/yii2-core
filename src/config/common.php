@@ -79,7 +79,8 @@ $config = [
        ],
         'moduleManager' => [
             'class' => 'ant\moduleManager\ModuleManager',
-			'moduleAutoloadPaths' => ['@ant', '@common/modules',
+			'moduleAutoloadPaths' => ['@ant', 
+				'@common/modules', // Needed for project which have common\modules folder
 				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-cms/src/common/modules',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-ecommerce/src', 
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-user/src',
@@ -94,6 +95,7 @@ $config = [
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-booking/src',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-subscription/src',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-library/src',
+				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-importer/src',
 			],
         ],
         'userConfig' => [
@@ -233,6 +235,7 @@ $config = [
         'mailer' => [
             'class' => 'ant\mail\QueueableMailer',
             'queue' => 'queue', // name of queue component, or a valid array configuration for it.
+			//'viewPath' => '@project/mails',
             'syncMailer' => [ // Any valid mailer should work
                 'class' => 'ant\mail\Mailer',
                 'viewPath' => '@project/mails',
