@@ -153,6 +153,9 @@ $config = [
 					env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-user/src/user/mails' => [
 						'@project/mails/user',
 					],
+					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-user/src/user/mails' => [
+						'@project/mails/user',
+					],
 					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-payment/src/payment/mails' => [
 						'@project/mails/payment',
 					],

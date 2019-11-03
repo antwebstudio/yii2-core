@@ -7,8 +7,19 @@ use Composer\Script\PackageEvent;
 
 class Installer {
 	public static function setup(\Composer\Script\Event $event) {
+		$arguments = $event->getArguments();
+		$options = [
+			'theme' => self::getOption('theme', $arguments),
+			'name' => self::getOption('name', $arguments),
+			'db' => self::getOption('db', $arguments),
+			'dbUser' => self::getOption('dbUser', $arguments),
+			'dbPassword' => self::getOption('dbPassword', $arguments),
+			'dbPrefix' => self::getOption('dbPrefix', $arguments),
+			'baseUrl' => self::getOption('baseUrl', $arguments),
+		];
+		Console::output(print_r($options, 1));
 		
-		$path = 'common/config';
+		$path = '.';
 		
 		$continue = true;
 		if (file_exists($path.'/.env')) {
@@ -26,9 +37,9 @@ class Installer {
 
 			Console::output('Project ID: '.$projectId);
 			
-			$applicationName = self::prompt('Application Name', 'My Application');	
-			$theme = self::prompt('Theme', $projectId);
-			$baseUrl = self::prompt('Base URL', 'http://localhost');
+			$applicationName = self::prompt('Application Name', $options['name']);	
+			$theme = self::prompt('Theme', isset($options['theme']) ? $options['theme'] : $projectId);
+			$baseUrl = self::prompt('Base URL', $options['baseUrl']);
 			$developerEmail = self::prompt('Developer Email', 'chy1988@gmail.com');
 			
 			Console::output("\n");
@@ -37,10 +48,10 @@ class Installer {
 			
 			$host = self::prompt('Host', 'localhost');
 			$port = self::prompt('Port', '3306');
-			$dbname = self::prompt('DB Name', $projectId);
-			$username = self::prompt('Username', 'root');
-			$password = self::prompt('Password');
-			$tablePrefix = self::prompt('Table Prefix', '');
+			$dbname = self::prompt('DB Name', $options['db']);
+			$username = self::prompt('Username', $options['dbUser']);
+			$password = self::prompt('Password', $options['dbPassword']);
+			$tablePrefix = self::prompt('Table Prefix', $options['dbPrefix']);
 			
 			//$path = \Yii::getAlias($path);
 			//Console::output(__DIR__);
@@ -60,6 +71,14 @@ class Installer {
 			self::setEnv($path, 'base_url', $baseUrl);
 			self::setEnv($path, 'developer_email', $developerEmail);
 		}	
+	}
+	
+	protected static function getOption($name, $arguments) {
+		foreach ($arguments as $arg) {
+			if (strpos($arg, '--'.$name.'=') !== false) {
+				return substr($arg, strlen('--'.$name.'='));
+			}
+		}
 	}
 	
 	protected static function getComposerBaseDir($event) {
