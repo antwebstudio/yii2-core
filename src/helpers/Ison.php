@@ -13,6 +13,7 @@ class Ison extends Component
 {
     public static function encode($data)
     {
+		if (YII_DEBUG && YII_LOCALHOST) throw new \Exception('DEPRECATED'); // 2019-11-05
         $ison = null;
 
         if (is_array($data)) {
@@ -41,11 +42,13 @@ class Ison extends Component
 
     public static function decode($ison, $assoc = false)
     {
+		if (YII_DEBUG && YII_LOCALHOST) throw new \Exception('DEPRECATED'); // 2019-11-05
         return json_decode(static::toJson($ison), $assoc);
     }
 
     public static function toJson($ison)
     {
+		if (YII_DEBUG && YII_LOCALHOST) throw new \Exception('DEPRECATED'); // 2019-11-05
         $pattern = '/\[([^\[^\]]+)\]/i';
 
         do {
@@ -109,6 +112,7 @@ class Ison extends Component
 
     protected static function isJson($string)
     {
+		if (YII_DEBUG && YII_LOCALHOST) throw new \Exception('DEPRECATED'); // 2019-11-05
         return is_string($string) && is_array(json_decode($string, true)) && (json_last_error() == JSON_ERROR_NONE) ? true : false;
     }
 }

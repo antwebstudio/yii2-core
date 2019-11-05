@@ -38,8 +38,9 @@ class ConfigBuilder {
 				YII_PROJECT_BASE_PATH . '/config/web-api.php',
 			],
 			self::TEST_FUNCTIONAL => [
-				dirname(__DIR__) . '/config/test.php',
-				YII_PROJECT_BASE_PATH . '/config/test.php',
+				YII_PROJECT_BASE_PATH . '/config/web-frontend.php',
+				dirname(__DIR__) . '/config/test-functional.php',
+				//YII_PROJECT_BASE_PATH . '/config/test.php',
 			],
 		];
 	}

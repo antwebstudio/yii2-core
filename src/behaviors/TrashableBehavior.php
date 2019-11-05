@@ -6,6 +6,10 @@ class TrashableBehavior extends \yii2tech\ar\softdelete\SoftDeleteBehavior {
         'is_deleted' => true
 	];
 	
+	public function getIsTrashed() {
+		return $this->owner->is_deleted;
+	}
+	
 	protected function softDeleteInternal()
     {
         $result = false;

@@ -6,14 +6,14 @@ use yii\helpers\Html;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?php echo Yii::$app->language ?>">
 	<head>
 		<?php if (YII_DEBUG): ?><meta name="robots" content="noindex"><?php endif ?>
-	    <meta charset="<?= Yii::$app->charset ?>"/>
+	    <meta charset="<?php echo Yii::$app->charset ?>"/>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <title><?= Html::encode($this->title) ?></title>
+	    <title><?php echo Html::encode($this->title) ?></title>
 	    <?php $this->head() ?>
-	    <?= Html::csrfMetaTags() ?>
+	    <?php echo Html::csrfMetaTags() ?>
 	</head>
 	<body class="system module-<?= $this->context->module->id ?> controller-<?= $this->context->id ?> action-<?= $this->context->action->id ?>">
 		<?php $this->beginBody() ?>
