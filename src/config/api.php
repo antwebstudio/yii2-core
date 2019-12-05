@@ -3,14 +3,8 @@
 return [
 	'id' => 'api-application',
     'basePath' => dirname(__DIR__),
-	
-	// Disable the behavior set at common config file 
-	'as beforeRequest' => [
-		'class' => 'ant\rbac\GlobalAccessControl',
-		'enabled' => false,
-	],
 	'as authenticator' => [
-		'class' => \yii\filters\auth\CompositeAuth::className(),
+		'class' => \ant\rbac\ApiGlobalAccessControl::className(),
 		'authMethods' => [
 			\yii\filters\auth\HttpBasicAuth::className(),
 			\yii\filters\auth\HttpBearerAuth::className(),

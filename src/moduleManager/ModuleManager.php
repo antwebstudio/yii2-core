@@ -518,7 +518,7 @@ class ModuleManager extends \yii\base\Component
 					$ns[] = substr($class, 0, $pos) . '\\migrations\\'.$type;
 					
 					// api
-					$ns[] = 'api\v1'.substr($class, strlen('common'), $pos - strlen('common')) . '\\migrations\\'.$type;
+					//$ns[] = 'api\v1'.substr($class, strlen('common'), $pos - strlen('common')) . '\\migrations\\'.$type;
 				}
 			}
 		}

@@ -38,12 +38,12 @@ $config = [
 			'class' => 'ant\components\ProjectContainer',
 		],
 		'apiUrlManager' => [
+            'class' => 'yii\web\urlManager',
             'baseUrl' => Yii::getAlias('@apiUrl'),
 			'enablePrettyUrl' => true,
 			'enableStrictParsing' => true,
 			'showScriptName' => false,
 			'rules' => [
-				['class' => 'yii\rest\UrlRule'],
 			],
 		],
         'urlManagerFrontEnd' => [
