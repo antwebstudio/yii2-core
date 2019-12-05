@@ -51,6 +51,7 @@ class ModelClass extends \yii\db\ActiveRecord
     }
 
     public static function getClassId($modelClassName) {
+		$modelClassName = is_object($modelClassName) ? get_class($modelClassName) : $modelClassName;
         $model = self::find()->andWhere(['class_name' => $modelClassName])->one();
         if (!isset($model)) {
             $model = new self;
