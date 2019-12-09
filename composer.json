@@ -26,6 +26,7 @@
         "tuyakhov/yii2-notifications": "*",
         "cebe/yii2-lifecycle-behavior": "^2.0",
 		"hashids/hashids": "2.0",
+        "nizsheanez/yii2-asset-converter": "^1.5",
         "brussens/yii2-maintenance-mode": "0.2.6"
 	},
     "require-dev": {
@@ -73,6 +74,9 @@
 			"https,ssh"
         ]
     },
+    "bin": [
+        "init"
+    ],
     "autoload": {
         "psr-4": {
 			"ant\\": "src",

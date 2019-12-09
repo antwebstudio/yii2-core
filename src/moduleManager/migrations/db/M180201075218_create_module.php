@@ -2,7 +2,7 @@
 
 namespace ant\moduleManager\migrations\db;
 
-use ant\components\Migration;
+use ant\db\Migration;
 
 class M180201075218_create_module extends Migration
 {

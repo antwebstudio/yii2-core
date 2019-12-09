@@ -1,5 +1,5 @@
 <?php
-use ant\components\Migration;
+use ant\db\Migration;
 
 class m170920_013904_create_config_table extends Migration
 {

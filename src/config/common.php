@@ -9,7 +9,7 @@ $config = [
         'storage' => '@project/storage',
         '@ant/rbac/views' => '@vendor/antweb/yii2-user/src/rbac/views',
 		'@ant/migrations' => '@vendor/antweb/yii2-core/src/migrations',
-		//'@ant/moduleManager' => '@vendor/inspirenmy/yii2-core/src/common/modules/moduleManager',
+		'@ant/moduleManager' => '@vendor/antweb/yii2-core/src/moduleManager',
 		//'@common/assets/StyleAsset' => '@vendor/inspirenmy/yii2-core/src/common/assets/StyleAsset',
 		//'@frontend/assets/AppAsset' => '@vendor/inspirenmy/yii2-core/src/frontend/assets/AppAsset',
 		'@backend/themes/adminlte' => '@vendor/inspirenmy/yii2-core/src/backend/themes/adminlte',
@@ -18,7 +18,7 @@ $config = [
     ],
 	'layout' => 'default',
     'vendorPath' => '@project/vendor',
-    'bootstrap' => ['log', 'config', 'queue', 'ant\moduleManager\ModuleAutoLoader'],
+    'bootstrap' => ['log', 'queue', 'ant\moduleManager\ModuleAutoLoader'],
     'modules' => [
         'gridview' =>  [
             'class' => '\kartik\grid\Module'
@@ -114,7 +114,7 @@ $config = [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => [\ant\rbac\Role::ROLE_GUEST, \ant\rbac\Role::ROLE_USER],
         ],
-		'config' => [
+		/*'config' => [
             'class' => 'yii2tech\config\Manager',
 			'storage' => [
 				'class' => 'yii2tech\config\StorageDb',
@@ -130,7 +130,7 @@ $config = [
                     ],
                 ],
 			],
-		],
+		],*/
         /*'config' => [
             'class' => 'inspirenmy\config\Configurator',
             'tableName' => '{{%config}}',

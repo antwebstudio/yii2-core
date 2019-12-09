@@ -1,6 +1,6 @@
 <?php
 
-use ant\components\Migration;
+use ant\db\Migration;
 
 class m181007_054128_create_model_class extends Migration
 {

@@ -9,6 +9,7 @@ class Bootstrap {
 	const TEST = 'test';
 	const TEST_ACCEPTANCE = 'test-acceptance';
 	const TEST_FUNCTIONAL = 'test-functional';
+	const INIT = 'init';
 	
 	public $files = [
 		self::FRONTEND => 'web-frontend.php',
@@ -18,6 +19,7 @@ class Bootstrap {
 		self::TEST => 'test.php',
 		self::TEST_ACCEPTANCE => 'test-acceptance.php',
 		self::TEST_FUNCTIONAL => 'test-functional.php',
+		self::INIT => 'init.php',
 	];
 	
 	public function load($name, $projectPath, $storagePath) {

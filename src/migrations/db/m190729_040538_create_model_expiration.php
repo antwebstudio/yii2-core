@@ -1,6 +1,6 @@
 <?php
 
-use ant\components\Migration;
+use ant\db\Migration;
 
 /**
  * Class m190729_040538_create_model_expiration

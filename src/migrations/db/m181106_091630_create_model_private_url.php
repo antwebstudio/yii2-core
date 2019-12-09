@@ -1,6 +1,6 @@
 <?php
 
-use ant\components\Migration;
+use ant\db\Migration;
 
 class m181106_091630_create_model_private_url extends Migration
 {

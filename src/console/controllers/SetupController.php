@@ -24,11 +24,11 @@ class SetupController extends Controller
 	];
 
     public $writablePaths = [
-        '@common/runtime',
-        '@frontend/runtime',
-        '@frontend/web/assets',
-        '@backend/runtime',
-        '@backend/web/assets',
+        '@ant/runtime',
+        //'@frontend/runtime',
+        //'@frontend/web/assets',
+        //'@backend/runtime',
+        //'@backend/web/assets',
         '@storage/cache',
         '@storage/web/source'
     ];
