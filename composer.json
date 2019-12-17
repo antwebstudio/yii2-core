@@ -17,17 +17,12 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
 		"shaqman/yii2-queue-mailer": "*",
 		"vlucas/phpdotenv": "^2.0",
-        "yii2-starter-kit/yii2-file-kit": "*",
         "voskobovich/yii2-linker-behavior": "^4.0",
-        "inspirenmy/php-math-parser": "*",
 		"yii2mod/yii2-timezone": "*",
-        "creocoder/yii2-nested-sets": "^0.9.0",
         "yii2tech/ar-softdelete": "^1.0",
         "tuyakhov/yii2-notifications": "*",
         "cebe/yii2-lifecycle-behavior": "^2.0",
-		"hashids/hashids": "2.0",
-        "nizsheanez/yii2-asset-converter": "^1.5",
-        "brussens/yii2-maintenance-mode": "0.2.6"
+		"hashids/hashids": "2.0"
 	},
     "require-dev": {
         "phpstan/phpstan": "^0.10.3",
@@ -43,7 +38,6 @@
         }
 	],
 	"scripts": {
-		"post-install-cmd": "@setup",
 		"migrate-test" : "@php tests/bin/yii migrate --interactive=0 --migrationPath=@yii/rbac/migrations,@common/migrations/db,@tests/migrations/db",
 		"test" : [
 			"@setup", 
