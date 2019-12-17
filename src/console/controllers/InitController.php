@@ -20,19 +20,18 @@ class InitController extends \yii\console\Controller {
 		$from = Yii::getAlias($this->path);
 		$to = Yii::getAlias($this->to.'/.env');
 		
-		$basePath = Yii::getAlias($this->basePath);;
-		$projectId = basename($basePath);
 		
-		//$this->getParams();
-		
-		//$this->generateEnvFile($from, $to, $this->params);
-		
+		if (!file_exists($to) || $this->confirm('.env file is exist, do you want to regenerate it? ')) {
+			$this->getParams();
+			
+			$this->generateEnvFile($from, $to, $this->params);
+		}		
 		$this->copyTemplate();
-		
-        //\Yii::$app->runAction('setup', ['interactive' => false]);
 	}
 	
 	protected function getParams() {
+		$basePath = Yii::getAlias($this->basePath);
+		$projectId = basename($basePath);
 		$this->params = [
 			'debug' => 'false',
 			'env' => 'dev',

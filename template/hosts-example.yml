@@ -1,0 +1,13 @@
+beta:
+  application: survey
+  db: eventuco_survey
+  dbUser: eventuco_chy1988
+  dbPassword: 
+  identityFile: ~/.ssh/id_rsa
+  hostname: antwebstudio.com
+  user: eventuco
+  port: 55000
+  deploy_path: ~/public_html/dev.antwebstudio.com/{{application}}
+  name: ""
+  dbPrefix: 
+  baseUrl: https://dev.antwebstudio.com/{{application}}

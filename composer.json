@@ -15,6 +15,7 @@
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
+		"antweb/yii2-module-composer": "@dev",
 		"shaqman/yii2-queue-mailer": "*",
 		"vlucas/phpdotenv": "^2.0",
         "voskobovich/yii2-linker-behavior": "^4.0",

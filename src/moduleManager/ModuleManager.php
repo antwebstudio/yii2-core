@@ -73,6 +73,8 @@ class ModuleManager extends \yii\base\Component
             $this->enabledModules = ModuleEnabled::getEnabledIds();
         }
 		
+		$this->initModuleAutoloadPaths();
+		
 		// Scan module paths
 		if (isset(Yii::$app->cache)) {
 			if (YII_DEBUG || ($configs = Yii::$app->cache->get(self::CACHE_ID)) === false) {
@@ -439,6 +441,14 @@ class ModuleManager extends \yii\base\Component
 	
 	public function getEnabledModules() {
 		return $this->enabledModules;
+	}
+	
+	protected function initModuleAutoloadPaths() {
+		$modules = require Yii::getAlias('@vendor/antweb/modules.php');
+		
+		foreach (array_keys($modules) as $composerName) {
+			$this->moduleAutoloadPaths[] = env('PACKAGES_PATH', '@vendor').'/'.$composerName.'/src';
+		}
 	}
 	
 	protected function scanModulePaths() {

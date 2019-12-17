@@ -90,7 +90,7 @@ $config = [
             'class' => 'ant\moduleManager\ModuleManager',
 			'moduleAutoloadPaths' => ['@ant', 
 				'@common/modules', // Needed for project which have common\modules folder
-				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-cms/src/common/modules',
+				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-cms/src',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-ecommerce/src', 
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-user/src',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-core-module/src',
