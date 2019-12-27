@@ -3,6 +3,10 @@ namespace ant\helpers;
 
 class StringHelper
 {
+	public static function generateTitle($name) {
+		return \yii\helpers\Inflector::camel2Words($name);
+	}
+	
 	public static function forEach($array, $callback) {
 		$string = '';
 		foreach ($array as $value) {

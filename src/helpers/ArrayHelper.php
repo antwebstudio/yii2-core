@@ -3,6 +3,11 @@ namespace ant\helpers;
 
 class ArrayHelper extends \yii\helpers\ArrayHelper
 {
+	public static function getFirst($array, $count) {
+		$chunked = array_chunk($array, $count, true);
+		return $chunked[0];
+	}
+	
 	public static function toggleValue($array, $value) {
 		$remove = self::removeValue($array, (string) $value);
 		

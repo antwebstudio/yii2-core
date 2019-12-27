@@ -7,6 +7,10 @@
  * it doesn't pretend to be a full list of available possibilities
  * -----
  */
+ 
+function __t($string) {
+	return $string;
+}
 
 /**
  * @return int|string

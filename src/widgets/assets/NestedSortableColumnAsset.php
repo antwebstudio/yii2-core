@@ -9,7 +9,7 @@ use yii\web\AssetBundle;
  */
 class NestedSortableColumnAsset extends AssetBundle
 {
-	public $sourcePath = '@common/widgets/assets/nestedSortable';
+	public $sourcePath = __DIR__ . '/nestedSortable';
 	
     public $css = [
 		'grid.css',
@@ -25,7 +25,6 @@ class NestedSortableColumnAsset extends AssetBundle
 	
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
 		'yii\jui\JuiAsset',
         '\rmrevin\yii\fontawesome\AssetBundle',
     ];

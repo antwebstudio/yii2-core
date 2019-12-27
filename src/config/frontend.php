@@ -122,7 +122,7 @@ $config = [
 						'@project/themes/'.env('THEME', 'default').'/views/modules',
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],
-					env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-cms/src' => [
+					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-cms/src' => [
 						'@project/themes/'.env('THEME', 'default').'/views/modules',
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],
@@ -144,6 +144,10 @@ $config = [
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],
 					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-booking/src' => [
+						'@project/themes/'.env('THEME', 'default').'/views/modules',
+						'@app/themes/'.env('THEME', 'default').'/views/modules',
+					],
+					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-core-module/src' => [
 						'@project/themes/'.env('THEME', 'default').'/views/modules',
 						'@app/themes/'.env('THEME', 'default').'/views/modules',
 					],

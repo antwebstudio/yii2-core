@@ -1,8 +1,4 @@
 <?php
-
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-
 /* @var $this \yii\web\View */
 /* @var $content string */
 
@@ -10,24 +6,39 @@ $this->beginContent('@app/views/layouts/_clear.php')
 ?>
 <div class="wrap">
 
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse',
-        ],
-    ]); ?>
+	<?php if (isset(Yii::$app->params['bsVersion']) && Yii::$app->params['bsVersion'] >= 4): ?>
+		<?php \yii\bootstrap4\NavBar::begin([
+			'brandLabel' => Yii::$app->name,
+			'brandUrl' => Yii::$app->homeUrl,
+		]) ?>
 
-    <?= Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => isset(\Yii::$app->menu) ? \Yii::$app->menu->getMainMenu() : [],
-    ]); ?>
-    <?php NavBar::end(); ?>
+			<?= \yii\bootstrap4\Nav::widget([
+				'options' => ['class' => 'navbar-nav ml-auto'],
+				'items' => isset(\Yii::$app->menu) ? \Yii::$app->menu->getMainMenu() : [],
+			]) ?>
+		
+		<?php \yii\bootstrap4\NavBar::end() ?>
+	<?php else: ?>
+		<?php \yii\bootstrap\NavBar::begin([
+			'brandLabel' => Yii::$app->name,
+			'brandUrl' => Yii::$app->homeUrl,
+			'options' => [
+				'class' => 'navbar-inverse',
+			],
+		]) ?>
+
+			<?= \yii\bootstrap\Nav::widget([
+				'options' => ['class' => 'navbar-nav navbar-right'],
+				'items' => isset(\Yii::$app->menu) ? \Yii::$app->menu->getMainMenu() : [],
+			]) ?>
+		
+		<?php \yii\bootstrap\NavBar::end() ?>
+		
+	<?php endif ?>
 
 	<?php if (isset($this->blocks['page-header'])): ?>
 		<?= $this->blocks['page-header'] ?>
-	<?php endif; ?>
+	<?php endif ?>
 
     <?= $content ?>
 

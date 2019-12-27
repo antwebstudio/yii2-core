@@ -18,7 +18,7 @@ class SetupController extends Controller
 	public $targetPath;
 	
 	public $symlinks = [
-		//'@project/frontend/web/storage' => '@project/storage/web',
+		'@project/web/storage' => '@project/storage/web',
 		//'@project/frontend/web/admin' => '@project/backend/web',
 		//'C:/wamp64/www/ant/eventmy/frontend/web/storage' => 'C:/wamp64/www/ant/eventmy/storage/web',
 	];

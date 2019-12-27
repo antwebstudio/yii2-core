@@ -8,6 +8,8 @@ use yii\helpers\ArrayHelper;
 
 class ConfigurableModuleBehavior extends Behavior {
 	public $types = [];
+	public $pageTitles = [];
+	
     protected $_formModel = [];
 
     public function setFormModels(array $configs) {
@@ -48,5 +50,12 @@ class ConfigurableModuleBehavior extends Behavior {
 	
 	public function formModels() {
 		return [];
+	}
+	
+	public function getPageTitle($controller, $default = null) {
+		if (isset($this->pageTitles[$controller->route])) {
+			return $this->pageTitles[$controller->route];
+		}
+		return $default;
 	}
 }

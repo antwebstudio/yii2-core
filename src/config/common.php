@@ -5,15 +5,13 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
-		'@ant' => YII_APP_BASE_PATH,
+		//'@app' => YII_APP_BASE_PATH,
+		'@ant' => YII_APP_BASE_PATH.'/modules',
         'storage' => '@project/storage',
         '@ant/rbac/views' => '@vendor/antweb/yii2-user/src/rbac/views',
 		'@ant/migrations' => '@vendor/antweb/yii2-core/src/migrations',
 		'@ant/moduleManager' => '@vendor/antweb/yii2-core/src/moduleManager',
-		//'@common/assets/StyleAsset' => '@vendor/inspirenmy/yii2-core/src/common/assets/StyleAsset',
-		//'@frontend/assets/AppAsset' => '@vendor/inspirenmy/yii2-core/src/frontend/assets/AppAsset',
 		'@backend/themes/adminlte' => '@vendor/inspirenmy/yii2-core/src/backend/themes/adminlte',
-		//'@common/widgets' => '@vendor/inspirenmy/yii2-core/src/common/widgets',
 		'@common/config' => '@project/config', // for behaviors use
     ],
 	'layout' => 'default',
@@ -89,7 +87,7 @@ $config = [
         'moduleManager' => [
             'class' => 'ant\moduleManager\ModuleManager',
 			'moduleAutoloadPaths' => ['@ant', 
-				'@common/modules', // Needed for project which have common\modules folder
+				'@common/modules', // Needed for project which have ant folder
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-cms/src',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-ecommerce/src', 
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-user/src',
@@ -176,6 +174,15 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+            'cachePath' => '@runtime/cache'
+        ],
+        'frontendCache' => [
+            'class' => 'yii\caching\FileCache',
+            'cachePath' => '@runtime/frontend/cache'
+        ],
+        'backendCache' => [
+            'class' => 'yii\caching\FileCache',
+            'cachePath' => '@runtime/backend/cache'
         ],
         'fileStorage' => [
             'class' => '\trntv\filekit\Storage',

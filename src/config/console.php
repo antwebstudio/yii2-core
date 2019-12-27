@@ -3,7 +3,7 @@
 return [
     'id' => 'app-console',
     'basePath' => YII_APP_BASE_PATH,
-	'runtimePath' => YII_APP_BASE_PATH.'/runtime/console',
+	'runtimePath' => YII_APP_BASE_PATH.'/runtime', // Should NOT set to runtime/console or else php yii cache/flush-all will fail
     'bootstrap' => ['log'],
     'controllerNamespace' => 'ant\console\controllers',
     'controllerMap' => [
@@ -65,14 +65,6 @@ return [
 		'maintenanceMode' => [
 			'class' => 'brussens\maintenance\MaintenanceMode',
 		],
-        'frontendCache' => [
-            'class' => 'yii\caching\FileCache',
-            'cachePath' => '@frontend/runtime/cache'
-        ],
-        'backendCache' => [
-            'class' => 'yii\caching\FileCache',
-            'cachePath' => '@backend/runtime/cache'
-        ],
 		'assetManager' => [
 			'class' => 'yii\web\AssetManager',
 			'basePath' => '@project/frontend/web/assets',

@@ -27,18 +27,6 @@ $config = [
     'components' => [
         'moduleManager' => [
             'class' => 'ant\moduleManager\ModuleManager',
-			'moduleAutoloadPaths' => ['@backend/modules', 
-				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-ecommerce/src/backend/modules', 
-				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-user/src/backend/modules',
-				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-core/src/backend/modules',
-				env('PACKAGES_PATH', '@vendor/inspirenmy').'/yii2-cms/src/backend/modules',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-importer/src',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-dashboard/src',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-affiliate/src',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-event/src/backend',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-cart/src/backend/modules',
-				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-payment/src',
-			],
         ],
         'menu' => [
             'class' => 'ant\components\MenuManager',
@@ -68,17 +56,17 @@ $config = [
             'theme' => [
                 'class' => 'ant\components\Theme',
                 'skin' => 'skin-black',
-                'asset' => '\ant\themes\adminlte\assets\ThemeAsset',
+                'asset' => '\ant\themes\\'.env('BACKEND_THEME', 'adminlte').'\assets\ThemeAsset',
                 'pathMap' => [
+					'@vendor/antweb/yii2-ecommerce/src/ecommerce/backend/views' => '@project/themes/backend/views/ecommerce',
 					'@app/views' => [
-						'@vendor/antweb/yii2-web/src/themes/adminlte/views',
+						'@vendor/antweb/yii2-web/src/themes/'.env('BACKEND_THEME', 'adminlte').'/views',
 						'@vendor/antweb/yii2-web/src/backend/views',
 						'@vendor/antweb/yii2-core/src/views',
 					],
-                    '@backend/modules' => '@vendor/inspirenmy/yii2-ecommerce/src/backend/modules',
+                    '@backend/modules' => '@vendor/antweb/yii2-ecommerce/src/backend/modules',
 					
-					'@vendor/inspirenmy/yii2-core/src/backend/modules' => '@project/backend/views/modules',
-					'@vendor/inspirenmy/yii2-ecommerce/src/backend/modules' => '@project/backend/views/modules',
+					'@vendor/antweb/yii2-core/src/backend/modules' => '@project/themes/views/backend/views/modules',
 					
 					// Email
 					'@ant/order/mails' => '@project/mail',
