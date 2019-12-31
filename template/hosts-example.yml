@@ -10,4 +10,5 @@ beta:
   deploy_path: ~/public_html/dev.antwebstudio.com/{{application}}
   name: ""
   dbPrefix: 
+  theme: "{{application}}"
   baseUrl: https://dev.antwebstudio.com/{{application}}

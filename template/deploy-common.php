@@ -5,7 +5,14 @@ require 'recipe/common.php';
 
 inventory('hosts.yml');
 
+// [Optional] Allocate tty for git clone. Default value is false.
+set('git_tty', true); 
+
+// [Optional] If deploy fails automatically unlock.
+after('deploy:failed', 'deploy:unlock');
+
 set('bin/yii', '{{bin/php}} yii');
+set('default_timeout', 0);
 
 task('ssh-add', function() {
 	runLocally('eval $(ssh-agent -s)');
