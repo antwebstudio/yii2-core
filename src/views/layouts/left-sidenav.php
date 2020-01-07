@@ -6,7 +6,7 @@ use kartik\sidenav\SideNav;
 $sideNavItems = isset($this->params['sideNav']['items']) ? $this->params['sideNav']['items'] : null;
 
 ?>
-<?php $this->beginContent('@app/views/layouts/base.php'); ?>
+<?php $this->beginContent('@app/views/layouts/base.php') ?>
 <div class="layout-left-sidenav container">
 	<div class="row">
 		<?php if (isset($sideNavItems)): ?>
@@ -35,4 +35,4 @@ $sideNavItems = isset($this->params['sideNav']['items']) ? $this->params['sideNa
 		</div>
 	</div>
 </div>
-<?php $this->endContent(); ?>
+<?php $this->endContent() ?>

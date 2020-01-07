@@ -8,15 +8,9 @@ use Composer\Script\PackageEvent;
 class Installer {
 	public static function setup(\Composer\Script\Event $event) {
 		$arguments = $event->getArguments();
-		$options = [
-			'theme' => self::getOption('theme', $arguments),
-			'name' => self::getOption('name', $arguments),
-			'db' => self::getOption('db', $arguments),
-			'dbUser' => self::getOption('dbUser', $arguments),
-			'dbPassword' => self::getOption('dbPassword', $arguments),
-			'dbPrefix' => self::getOption('dbPrefix', $arguments),
-			'baseUrl' => self::getOption('baseUrl', $arguments),
-		];
+		
+		$options = self::getOptions($arguments);
+		
 		Console::output(print_r($options, 1));
 		
 		$path = '.';
@@ -70,7 +64,23 @@ class Installer {
 			self::setEnv($path, 'theme', $theme);
 			self::setEnv($path, 'base_url', $baseUrl);
 			self::setEnv($path, 'developer_email', $developerEmail);
+			
+			foreach($options as $name => $value) {
+				self::setEnv($path, $name, $value);
+			}
 		}	
+	}
+	
+	protected static function getOptions($arguments) {
+		$options = [];
+		
+		foreach ($arguments as $arg) {
+			$name = substr($arg, 2, strpos($arg, '=') - 2);
+			$value = substr($arg, strpos($arg, '=') + 1);
+			
+			$options[$name] = $value;
+		}
+		return $options;
 	}
 	
 	protected static function getOption($name, $arguments) {

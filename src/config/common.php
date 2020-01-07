@@ -103,6 +103,7 @@ $config = [
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-subscription/src',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-library/src',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-importer/src',
+				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-web/src',
 			],
         ],
         'userConfig' => [
@@ -190,6 +191,18 @@ $config = [
             'filesystem' => [
                 'class' => 'ant\file\LocalFlysystemBuilder',
                 'path' => '@storage/web/source'
+            ],
+            'as log' => [
+                'class' => 'ant\behaviors\FileStorageLogBehavior',
+                'component' => 'fileStorage'
+            ]
+        ],
+        'elfinderStorage' => [
+            'class' => '\trntv\filekit\Storage',
+            'baseUrl' => '@storageUrl/finder',
+            'filesystem' => [
+                'class' => 'ant\file\LocalFlysystemBuilder',
+                'path' => '@storage/web/finder'
             ],
             'as log' => [
                 'class' => 'ant\behaviors\FileStorageLogBehavior',

@@ -22,6 +22,18 @@ class Migration extends \yii\db\Migration {
 		],
 	];
 	
+	protected function id() {
+		return $this->primaryKey()->unsigned();
+	}
+	
+	protected function morphId() {
+		return $this->integer()->unsigned()->null()->defaultValue(null);
+	}
+	
+	protected function morphClass() {
+		return $this->integer()->unsigned()->null()->defaultValue(null);
+	}
+	
 	protected function createIndexFor($columns) {
 		$this->createIndex($this->getIndexName($this->tableName, $columns, self::INDEX), $this->tableName, $columns, false);
 	}
