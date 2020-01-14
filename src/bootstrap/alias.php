@@ -5,8 +5,8 @@
  */
 Yii::setAlias('@project', YII_PROJECT_BASE_PATH);
 Yii::setAlias('@common', YII_APP_BASE_PATH . '/common');
-Yii::setAlias('@frontend', YII_APP_BASE_PATH . '/frontend');
-Yii::setAlias('@backend', YII_APP_BASE_PATH . '/backend');
+Yii::setAlias('@frontend', YII_APP_BASE_PATH . '/web');
+Yii::setAlias('@backend', YII_APP_BASE_PATH . '/web/admin');
 Yii::setAlias('@console', YII_APP_BASE_PATH . '/console');
 Yii::setAlias('@root', YII_APP_BASE_PATH);
 //Yii::setAlias('@projects', YII_APP_BASE_PATH . '/projects');

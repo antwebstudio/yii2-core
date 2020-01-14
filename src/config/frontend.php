@@ -77,6 +77,7 @@ $config = [
 				'127.0.0.1',
 			],
 			'urls' => [ // Allowed URLs
+				'login',
 				'site/login',
 				'user/signin/login',
 			],

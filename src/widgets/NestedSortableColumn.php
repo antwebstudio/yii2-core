@@ -11,6 +11,7 @@ class NestedSortableColumn extends \yii\grid\DataColumn {
 	public $depthAttribute = 'depth';
 	public $handleTooltip = 'Drag to sort';
 	public $handleIcon = 'glyphicon glyphicon-move fas fa-arrows-alt';
+	public $sortable = true;
 
 	public function init() {
 		$this->grid->options['data-structure-id'] = $this->structureId;
@@ -47,7 +48,9 @@ class NestedSortableColumn extends \yii\grid\DataColumn {
 		$html = '';
 		
 		$html .= Html::beginTag('td', $options);
-		$html .= "<a class=\"move icon ".$this->handleIcon."\" title=\"".$this->handleTooltip."\" role=\"button\"></a> &nbsp; ";
+		if ($this->sortable) {
+			$html .= "<a class=\"move icon ".$this->handleIcon."\" title=\"".$this->handleTooltip."\" role=\"button\"></a> &nbsp; ";
+		}
 		$html .= $this->renderDataCellContent($model, $key, $index);
 		$html .= Html::endTag('td');
 		
