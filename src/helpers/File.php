@@ -8,16 +8,18 @@ class File {
 	
 	protected $_path;
 	protected static $_mimeGroup = [
-		self::TYPE_IMAGE => ['image/jpeg', 'image/gif', 'image/png'],
-		self::TYPE_VIDEO => ['video/mp4'],
+		self::TYPE_IMAGE => ['image/*'],
+		self::TYPE_VIDEO => ['video/*'],
 	];
 	
-	public static function isVideoTypeMime($mime) {
-		return in_array($mime, self::$_mimeGroup[self::TYPE_VIDEO]);
+	public static function isVideoTypeMime($fileMimeType) {
+		//return in_array($fileMimeType, self::$_mimeGroup[self::TYPE_VIDEO]);
+		return self::match(self::$_mimeGroup[self::TYPE_VIDEO], $fileMimeType);
 	}
 	
-	public static function isImageTypeMime($mime) {
-		return in_array($mime, self::$_mimeGroup[self::TYPE_IMAGE]);
+	public static function isImageTypeMime($fileMimeType) {
+		//return in_array($fileMimeType, self::$_mimeGroup[self::TYPE_IMAGE]);
+		return self::match(self::$_mimeGroup[self::TYPE_IMAGE], $fileMimeType);
 	}
 	
 	public static function getTypeByMime($mime) {
@@ -34,6 +36,23 @@ class File {
 		$file = new self;
 		$file->_path = $path;
 		return $file;
+	}
+	
+	protected static function match($maskes, $match) {
+		foreach ($maskes as $mask) {
+			if (strcasecmp($mask, $match) === 0) {
+                return true;
+            }
+
+            if (strpos($mask, '*') !== false && preg_match(self::buildMimeTypeRegEx($mask), $match)) {
+                return true;
+            }
+		}
+		return false;
+	}
+	
+	protected static function buildMimeTypeRegEx($mask) {
+		return '/^' . str_replace('\*', '.*', preg_quote($mask, '/')) . '$/i';
 	}
 	
 	public function setFilename($newFilename, $includedExt = false) {

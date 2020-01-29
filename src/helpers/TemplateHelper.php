@@ -33,6 +33,10 @@ class TemplateHelper {
         return null;
 	}
 	
+	public static function render($template, $callback, $callbackParams = []) {
+		return static::renderTemplate($template, $callback, $callbackParams);
+	}
+	
 	public static function renderTemplate($template, $callback, $callbackParams = []) {
 		// Search for pattern {name}
 		return preg_replace_callback('/\\{([\w\-\/]+)\\}/', function ($matches) use ($callback, $callbackParams) {
