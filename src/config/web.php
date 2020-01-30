@@ -22,7 +22,11 @@ $config = [
                         //'output' => 'css', // parsed output file type
                         'options' => [ // optional options
                             //'enableCompass' => false, // default is true
-                            'importPaths' => ['@project/themes/'.env('THEME', 'default').'/public/sass', '@project/themes/'.env('THEME', 'default').'/public/sass/extends'], // import paths, you may use path alias here, 
+                            'importPaths' => [
+								'@npm/bootstrap/scss',
+								'@project/themes/'.env('THEME', 'default').'/public/sass', 
+								'@project/themes/'.env('THEME', 'default').'/public/sass/extends'
+							], // import paths, you may use path alias here, 
                                 // e.g., `['@path/to/dir', '@path/to/dir1', ...]`
                             //'lineComments' => false, // if true — compiler will place line numbers in your compiled output
                             'outputStyle' => 'compressed', // May be `compressed`, `crunched`, `expanded` or `nested`,

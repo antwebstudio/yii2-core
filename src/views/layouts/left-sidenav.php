@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use kartik\sidenav\SideNav;
 
 $sideNavItems = isset($this->params['sideNav']['items']) ? $this->params['sideNav']['items'] : null;
+$sideNavItems = isset($this->params['sidenav']) ? $this->params['sidenav'] : $sideNavItems;
 
 ?>
 <?php $this->beginContent('@app/views/layouts/base.php') ?>

@@ -34,12 +34,22 @@ class TemplateHelper {
 	}
 	
 	public static function render($template, $callback, $callbackParams = []) {
-		return static::renderTemplate($template, $callback, $callbackParams);
+		$html = $template;
+		foreach ($callback as $name => $value) {
+			if (is_callable($value)) {
+				$html = static::renderTemplate($html, [$name => $value], $callbackParams, false);
+			} else if (is_array($value)) {
+				$html = static::renderAttribute($html, [$name => $value]);
+			} else {
+				$html = strtr($html, ['{'.$name.'}' => $value]);
+			}
+		}
+		return $html;
 	}
 	
-	public static function renderTemplate($template, $callback, $callbackParams = []) {
+	public static function renderTemplate($template, $callback, $callbackParams = [], $replaceEmpty = false) {
 		// Search for pattern {name}
-		return preg_replace_callback('/\\{([\w\-\/]+)\\}/', function ($matches) use ($callback, $callbackParams) {
+		return preg_replace_callback('/\\{([\w\-\/]+)\\}/', function ($matches) use ($callback, $callbackParams, $replaceEmpty) {
             $name = $matches[1]; // Section token name
 			
 			if (is_callable($callbackParams)) {
@@ -52,7 +62,7 @@ class TemplateHelper {
 			} else if (is_array($callback) && isset($callback[$name])) {
 				return call_user_func_array($callback[$name], $callbackParams);
 			} else {
-				return '';
+				return $replaceEmpty ? '' : '{'.$name.'}';
 			}
 
             /*if (isset($this->visibleButtons[$name])) {

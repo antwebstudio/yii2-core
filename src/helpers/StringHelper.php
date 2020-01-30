@@ -3,6 +3,10 @@ namespace ant\helpers;
 
 class StringHelper
 {
+	public static function default($src, $default) {
+		return isset($src) ? $src : $default;
+	}
+	
 	public static function generateTitle($name) {
 		return \yii\helpers\Inflector::camel2Words($name);
 	}

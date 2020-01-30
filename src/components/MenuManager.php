@@ -1,6 +1,7 @@
 <?php
-
 namespace ant\components;
+
+use yii\helpers\ArrayHelper;
 
 class MenuManager extends \yii\base\Component {
 	const MENU_MEMBER = 'member';
@@ -20,9 +21,9 @@ class MenuManager extends \yii\base\Component {
     }
 	
 	//return null in config for blank menu
-	public function getMenu($name, $params = []) {
+	public function getMenu($name, $params = [], $default = []) {
 		if (!isset($this->menu[$name])) {
-			return [];
+			return $default;
 		}
 		
 		if (is_callable($this->menu[$name])) {
