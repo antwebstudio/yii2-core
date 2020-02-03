@@ -1,0 +1,34 @@
+# yii console command
+#/yii
+.env
+hosts.yml
+/runtime
+/storage/web/source
+
+# windows thumbnail cache
+Thumbs.db
+
+# picasa files
+.picasa.ini
+.picasaoriginals
+
+# composer vendor dir
+/vendor
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpunit itself is not needed
+phpunit.phar
+
+# local phpunit config
+/phpunit.xml
+
+error_log
+
+#ctags
+.tags
+.tags*

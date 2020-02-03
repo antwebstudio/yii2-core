@@ -3,12 +3,35 @@ beta:
   db: eventuco_survey
   dbUser: eventuco_chy1988
   dbPassword: 
+  dbPrefix: 
+  liveDb:
+  liveDbUser:
+  liveDbPassword:
   identityFile: ~/.ssh/id_rsa
   hostname: antwebstudio.com
   user: eventuco
   port: 55000
   deploy_path: ~/public_html/dev.antwebstudio.com/{{application}}
   name: ""
-  dbPrefix: 
   theme: "{{application}}"
   baseUrl: https://dev.antwebstudio.com/{{application}}
+  localhostDb:
+  
+production:
+  application: survey
+  db: eventuco_survey
+  dbUser: eventuco_chy1988
+  dbPassword: 
+  dbPrefix: 
+  liveDb:
+  liveDbUser:
+  liveDbPassword:
+  identityFile: ~/.ssh/id_rsa
+  hostname: antwebstudio.com
+  user: eventuco
+  port: 55000
+  deploy_path: ~/public_html/dev.antwebstudio.com/{{application}}
+  name: ""
+  theme: "{{application}}"
+  baseUrl: https://dev.antwebstudio.com/{{application}}
+  localhostDb:
