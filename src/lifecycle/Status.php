@@ -7,6 +7,7 @@ class Status extends \yii\base\Component {
 
     public $statusText = [];
 	public $statusSpanCss = [];
+	public $statusTransit = [];
 	public $defaultStatusSpanCss = 'label label-default';
 
     public $model;
@@ -39,6 +40,16 @@ class Status extends \yii\base\Component {
     }
 
     public function transit($status) {
-        return $this->setValue($status);
+		return $this->setValue($status);
     }
+	
+	public function checkTransitPermission($fromStatus, $toStatus) {
+		if (isset($this->statusTransit[$toStatus])) {
+			if (is_callable($this->statusTransit[$toStatus])) {
+				return call_user_func_array($this->statusTransit[$toStatus], [$this->model, $fromStatus]);
+			}
+			return $this->statusTransit[$toStatus];
+		}
+		return true;
+	}
 }

@@ -11,6 +11,8 @@ class LifecycleBehavior extends \cebe\lifecycle\LifecycleBehavior {
     public $statusModel = 'ant\lifecycle\Status';
 
     public $statusModelConfig = [];
+	
+	public $statusTransit = [];
 
     protected $oldStatusValue;
 
@@ -35,6 +37,7 @@ class LifecycleBehavior extends \cebe\lifecycle\LifecycleBehavior {
         $config['class'] = $this->statusModel;
         $config['model'] = $this->owner;
         $config['attribute'] = $attribute;
+		$config['statusTransit'] = isset($this->statusTransit[$attribute]) ? $this->statusTransit[$attribute] : null;
         return \Yii::createObject($config);
     }
 
@@ -60,7 +63,12 @@ class LifecycleBehavior extends \cebe\lifecycle\LifecycleBehavior {
 
     public function handleBeforeSave()
 	{
-        $this->oldStatusValue = $this->owner->getOldAttribute($this->statusAttribute);
+        $oldStatus = $this->oldStatusValue = $this->owner->getOldAttribute($this->statusAttribute);
+		$newStatus = $this->owner->getAttribute($this->statusAttribute);
+		
+		if ($this->getStatus()->checkTransitPermission($oldStatus, $newStatus) !== true) {
+			throw new \Exception('Transit of status is prohibited. ');
+		}
 		return parent::handleBeforeSave();
 	}
 

@@ -17,6 +17,7 @@ use ant\moduleManager\models\Module as ModuleEnabled;
  */
 class ModuleManager extends \yii\base\Component
 {
+	public $packagesPath = '@vendor';
 	public $moduleAutoloadPaths = '@app/modules'; // Should not be array which is not able to be overridden (it will be merged)
 
     /**
@@ -447,7 +448,7 @@ class ModuleManager extends \yii\base\Component
 		$modules = require Yii::getAlias('@vendor/antweb/modules.php');
 		
 		foreach (array_keys($modules) as $composerName) {
-			$this->moduleAutoloadPaths[] = env('PACKAGES_PATH', '@vendor').'/'.$composerName.'/src';
+			$this->moduleAutoloadPaths[] = $this->packagesPath.'/'.$composerName.'/src';
 		}
 	}
 	
