@@ -7,6 +7,7 @@ class Bootstrap {
 	const CONSOLE = 'console';
 	const API = 'api';
 	const TEST = 'test';
+	const TEST_CONSOLE = 'test-console';
 	const TEST_ACCEPTANCE = 'test-acceptance';
 	const TEST_FUNCTIONAL = 'test-functional';
 	const INIT = 'init';
@@ -17,6 +18,7 @@ class Bootstrap {
 		self::CONSOLE => 'console.php',
 		self::API => 'api.php',
 		self::TEST => 'test.php',
+		self::TEST_CONSOLE => 'test-console.php',
 		self::TEST_ACCEPTANCE => 'test-acceptance.php',
 		self::TEST_FUNCTIONAL => 'test-functional.php',
 		self::INIT => 'init.php',

@@ -24,12 +24,12 @@ class ConfigBuilder {
 				YII_PROJECT_BASE_PATH . '/config/console.php',
 			],
 			'test' => [
-				//dirname(__DIR__) . '/config/common.php',
+				dirname(__DIR__) . '/config/common.php',
 				//YII_PROJECT_BASE_PATH . '/config/common.php',
 				dirname(__DIR__) . '/config/console.php',
-				YII_PROJECT_BASE_PATH . '/config/console.php',
-				dirname(__DIR__) . '/tests/codeception/config/console.php',
-				YII_PROJECT_BASE_PATH . '/tests/config/local.php',
+				//YII_PROJECT_BASE_PATH . '/config/console.php',
+				//dirname(__DIR__) . '/tests/codeception/config/console.php',
+				//YII_PROJECT_BASE_PATH . '/tests/config/local.php',
 			],
 			'api' => [
 				//dirname(__DIR__) . '/config/common.php',

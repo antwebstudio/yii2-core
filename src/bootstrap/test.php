@@ -7,6 +7,6 @@ require_once(YII_PROJECT_BASE_PATH . '/vendor/autoload.php');
 require_once(YII_PROJECT_BASE_PATH . '/vendor/yiisoft/yii2/Yii.php');
 
 Yii::setAlias('@tests', YII_PROJECT_BASE_PATH.'/tests');
-//require(__DIR__ . '/common.php');
+require(__DIR__ . '/common.php');
 
 //require_once __DIR__ .' /alias.php';
