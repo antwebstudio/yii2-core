@@ -19,6 +19,9 @@ class SiteController extends Controller
     public function actions()
     {
         return [
+            'thumb' => [
+                'class' => 'ant\actions\ThumbOnFlyAction',
+            ],
             'timezone' => [
                 'class' => 'yii2mod\timezone\TimezoneAction',
             ],

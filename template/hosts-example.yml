@@ -16,6 +16,8 @@ beta:
   theme: "{{application}}"
   baseUrl: https://dev.antwebstudio.com/{{application}}
   localhostDb:
+  maintenance: false
+  debug: true
   
 production:
   application: survey
@@ -35,3 +37,5 @@ production:
   theme: "{{application}}"
   baseUrl: https://dev.antwebstudio.com/{{application}}
   localhostDb:
+  maintenance: true
+  debug: false
