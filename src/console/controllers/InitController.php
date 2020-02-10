@@ -4,6 +4,9 @@ namespace ant\console\controllers;
 
 use Yii;
 use yii\helpers\Console;
+use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Inflector;
 
 /**
  * @author Eugene Terentev <eugene@terentev.net>
@@ -11,47 +14,89 @@ use yii\helpers\Console;
 class InitController extends \yii\console\Controller {
 	public $path = '@vendor/antweb/yii2-core/src/config/.env.dist';
 	public $templatePath = '@vendor/antweb/yii2-core/template';
-	public $to = '@ant';
-	public $basePath = '@ant';
+	public $to = '@root';
+	public $basePath = '@root';
+	public $force = false;
 	
-	protected $params;
+	protected $params = [];
+	
+	protected $prompt = ['applicationName', 'dbHost', 'dbPort', 'dbName', 'dbUsername', 'dbPassword', 'dbTablePrefix', 'baseUrl', 'theme'];
+	
+	protected $defaultValues = [
+		'debug' => 'true',
+		'env' => 'dev',
+		'maintenance' => 'false',
+		'smtpHost' => 'mail.antwebstudio.com',
+		'smtpPort' => '26',
+		'smtpUsername' => 'robot@antwebstudio.com',
+		'smtpPassword' => 'antwebstudio',
+		'smtpEncryption' => '',
+		'applicationName' => '',
+		'dbHost' => 'localhost',
+		'dbPort' => '3306',
+		'dbUsername' => 'root',
+		'dbPassword' => 'root',
+		'dbName' => '',
+		'dbTablePrefix' => '',
+		'baseUrl' => '',
+		'backendTheme' => 'adminlte3',
+	];
+	
+	public function __get($name) {
+		try {
+			parent::__get($name);
+		} catch (\Exception $ex) {
+			return isset($this->params[$name]) ? $this->params[$name] : null;
+		}
+	}
+	
+	public function __set($name, $value) {
+		try {
+			parent::__set($name, $value);
+		} catch (\Exception $ex) {
+			$this->params[$name] = $value;
+		}
+	}
+
+	public function options($actionId)
+    {
+		$options = array_keys($this->defaultValues);
+		$options[] = 'force';
+        return ArrayHelper::merge(parent::options($actionId), $options);
+    }
 	
 	public function actionIndex() {
-		$from = Yii::getAlias($this->path);
-		$to = Yii::getAlias($this->to.'/.env');
-		
-		
-		if (!file_exists($to) || $this->confirm('.env file is exist, do you want to regenerate it? ')) {
-			$this->getParams();
-			
-			$this->generateEnvFile($from, $to, $this->params);
-		}		
-		$this->copyTemplate();
+		$this->generateEnvFile();
+		$this->copyProjectTemplate();
+	}
+	
+	public function actionInstall() {
+		$this->generateEnvFile();
+	}
+	
+	protected function getLabel($name) {
+		return Inflector::camel2words($name);
 	}
 	
 	protected function getParams() {
 		$basePath = Yii::getAlias($this->basePath);
 		$projectId = basename($basePath);
-		$this->params = [
-			'debug' => 'false',
-			'env' => 'dev',
-		];
 		
-		$projectId = $this->promptValue('project_id', 'Project ID', $projectId);
-		$this->promptValue('application_name', 'Application Names');
-		$this->promptValue('db_host', 'Host', 'localhost');
-		$this->promptValue('db_port', 'Port', '3306');
-		$this->promptValue('dbname', 'DB Name', $projectId);
-		$this->promptValue('db_username', 'Username', 'root');
-		$this->promptValue('db_password', 'Password');
-		$this->promptValue('db_table_prefix', 'Table Prefix', '');
-		$this->promptValue('base_url', 'Base Url');
-		$this->promptValue('theme', 'Theme', $projectId);
+		$projectId = $this->promptValue('projectId', $this->getLabel('projectId'), $projectId);
+		$this->defaultValues['dbName'] = $projectId;
+		$this->defaultValues['theme'] = $projectId;
+		$this->defaultValues['applicationName'] = Inflector::camel2words($projectId);
 		
-		$this->params['dbname_test'] = $this->params['dbname'];
+		foreach ($this->prompt as $prompt) {
+			if (!isset($this->params[$prompt])) {
+				$this->promptValue($prompt, $this->getLabel($prompt), isset($this->defaultValues[$prompt]) ? $this->defaultValues[$prompt] : null);
+			}
+		}
+		
+		$this->params = ArrayHelper::merge($this->defaultValues, $this->params);
 	}
 	
-	protected function copyTemplate() {
+	protected function copyProjectTemplate() {
 		$path = Yii::getAlias($this->templatePath);
 		$to = Yii::getAlias($this->to);
 		
@@ -129,11 +174,29 @@ class InitController extends \yii\console\Controller {
 		return $this->params[$name];
 	}
 	
-	protected function generateEnvFile($from, $to, $params = []) {
+	protected function generateEnvFile() {
+		$from = Yii::getAlias($this->path);
+		$to = Yii::getAlias($this->to.'/.env');
+		
+		if (!file_exists($to) || $this->force || $this->confirm('.env file is exist, do you want to regenerate it? ')) {
+			$this->getParams();
+			
+			$this->writeEnvFile($from, $to, $this->params);
+		}
+	}
+	
+	protected function writeEnvFile($from, $to, $params = []) {
 		$content = file_get_contents($from);
 		foreach ($params as $name => $value) {
 			$content = preg_replace('/<'.$name.'>/', $value, $content);
 		}
+		
+		$content = preg_replace_callback('/<generatedKey>/', function () {
+			$length = 32;
+			$bytes = openssl_random_pseudo_bytes(32, $cryptoStrong);
+			return strtr(substr(base64_encode($bytes), 0, $length), '+/', '_-');
+		}, $content);
+			
 		file_put_contents($to, $content);
 	}
 }

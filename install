@@ -33,5 +33,5 @@ $config = [
 ];
 
 $application = new yii\console\Application($config);
-$exitCode = $application->runAction('init', \ant\helpers\Console::getArguments());
+$exitCode = $application->runAction('init/install', \ant\helpers\Console::getArguments());
 exit($exitCode);

@@ -52,7 +52,6 @@ class SetupController extends Controller
         $this->runAction('set-writable', ['interactive' => $this->interactive]);
         $this->runAction('set-executable', ['interactive' => $this->interactive]);
         $this->runAction('set-keys', ['interactive' => $this->interactive]);
-		$this->runAction('create-symlinks', ['interactive' => $this->interactive]);
         \Yii::$app->runAction('core-migrate/up', ['interactive' => false]);
 
 		// Enable user module
@@ -68,6 +67,8 @@ class SetupController extends Controller
 		
 		\Yii::$app->runAction('user/generate-default-user', ['interactive' => $this->interactive]);
         \Yii::$app->runAction('cache/flush-all');
+		
+		$this->runAction('create-symlinks', ['interactive' => $this->interactive]);
     }
 
     public function actionSetWritable()

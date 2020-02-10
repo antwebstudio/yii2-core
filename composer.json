@@ -70,7 +70,8 @@
         ]
     },
     "bin": [
-        "init"
+        "init",
+		"install"
     ],
     "autoload": {
         "psr-4": {
