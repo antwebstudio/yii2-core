@@ -17,4 +17,8 @@ class TimestampBehavior extends \yii\behaviors\TimestampBehavior {
         }
         return parent::getValue($event);
     }
+	
+	public function getCreatedAt() {
+		return $this->owner->{$this->createdAtAttribute};
+	}
 }

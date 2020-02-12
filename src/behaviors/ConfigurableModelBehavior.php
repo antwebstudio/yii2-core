@@ -16,6 +16,16 @@ class ConfigurableModelBehavior extends Behavior {
 	public $extraRules = [];
 	public $extraAttributeLabels = [];
 	
+	public $overrideMethods = [];
+	
+	public function hasOverrideMethod($name) {
+		return isset($this->overrideMethods[$name]);
+	}
+	
+	public function invokeOverrideMethod($name, $params = []) {
+		return call_user_func_array($this->overrideMethods[$name], $params);
+	}
+	
 	public function getCombinedAttributeLabels($labels) {
 		$extra = is_callable($this->extraAttributeLabels) ? call_user_func_array($this->extraAttributeLabels, [$this->owner]) : $this->extraAttributeLabels;
 		return ArrayHelper::merge($labels, $extra);

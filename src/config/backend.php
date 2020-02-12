@@ -90,6 +90,9 @@ $config = [
     'as beforeRequest' => [
         'class' => 'ant\rbac\GlobalAccessControl',
     ],
+	'params' => [
+		'bsVersion' => 4,
+	],
 ];
 
 // Cannot put in common as this will cause console error - console don't have request->getIp
