@@ -26,6 +26,8 @@ class InitController extends \yii\console\Controller {
 		'debug' => 'true',
 		'env' => 'dev',
 		'maintenance' => 'false',
+		'emailAdmin' => 'chy1988@antwebstudio.com',
+		'emailRobot' => 'noreply@antwebstudio.com',
 		'smtpHost' => 'mail.antwebstudio.com',
 		'smtpPort' => '26',
 		'smtpUsername' => 'robot@antwebstudio.com',
@@ -40,6 +42,7 @@ class InitController extends \yii\console\Controller {
 		'dbTablePrefix' => '',
 		'baseUrl' => '',
 		'backendTheme' => 'adminlte3',
+		'theme' => '',
 	];
 	
 	public function __get($name) {

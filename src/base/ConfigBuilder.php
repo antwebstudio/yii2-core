@@ -8,6 +8,7 @@ class ConfigBuilder {
 	const API = 'api';
 	const TEST = 'test';
 	const TEST_FUNCTIONAL = 'test-functional';
+	const TEST_UNIT = 'test-unit';
 	
 	public function files() {
 		return [
@@ -24,12 +25,13 @@ class ConfigBuilder {
 				YII_PROJECT_BASE_PATH . '/config/console.php',
 			],
 			'test' => [
-				dirname(__DIR__) . '/config/common.php',
+				//dirname(__DIR__) . '/config/common.php',
 				//YII_PROJECT_BASE_PATH . '/config/common.php',
-				dirname(__DIR__) . '/config/console.php',
+				//dirname(__DIR__) . '/config/console.php',
 				//YII_PROJECT_BASE_PATH . '/config/console.php',
 				//dirname(__DIR__) . '/tests/codeception/config/console.php',
 				//YII_PROJECT_BASE_PATH . '/tests/config/local.php',
+				dirname(__DIR__) . '/config/test-common.php',
 			],
 			'api' => [
 				//dirname(__DIR__) . '/config/common.php',
@@ -41,6 +43,9 @@ class ConfigBuilder {
 				YII_PROJECT_BASE_PATH . '/config/web-frontend.php',
 				dirname(__DIR__) . '/config/test-functional.php',
 				//YII_PROJECT_BASE_PATH . '/config/test.php',
+			],
+			self::TEST_UNIT => [
+				dirname(__DIR__) . '/config/test-unit.php',
 			],
 		];
 	}

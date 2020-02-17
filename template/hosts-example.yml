@@ -1,41 +1,44 @@
 beta:
-  application: survey
-  db: eventuco_survey
-  dbUser: eventuco_chy1988
+  repository:
+  application: printcommerce
+  deploy_path: ~/public_html/dev.antwebstudio.com/{{application}}
+  baseUrl: https://dev.antwebstudio.com/{{application}}
+  db: eventuco_{{application}}_beta
+  dbUser: eventuco_antweb
   dbPassword: 
   dbPrefix: 
-  liveDb:
-  liveDbUser:
-  liveDbPassword:
+  liveDb: eventuco_{{application}}
+  liveDbUser: "{{dbUser}}"
+  liveDbPassword: "{{dbPassword}}"
   identityFile: ~/.ssh/id_rsa
   hostname: antwebstudio.com
   user: eventuco
   port: 55000
-  deploy_path: ~/public_html/dev.antwebstudio.com/{{application}}
   name: ""
   theme: "{{application}}"
-  baseUrl: https://dev.antwebstudio.com/{{application}}
-  localhostDb:
+  localhostDb: "{{application}}"
   maintenance: false
   debug: true
+  keep_releases: 1
   
 production:
-  application: survey
-  db: eventuco_survey
-  dbUser: eventuco_chy1988
+  repository:
+  application: printcommerce
+  deploy_path: ~/public_html/dev.antwebstudio.com/{{application}}
+  baseUrl: https://dev.antwebstudio.com/{{application}}
+  db: eventuco_{{application}}
+  dbUser: eventuco_antweb
   dbPassword: 
   dbPrefix: 
-  liveDb:
-  liveDbUser:
-  liveDbPassword:
+  liveDb: "{{db}}"
+  liveDbUser: "{{dbUser}}"
+  liveDbPassword: "{{dbPassword}}"
   identityFile: ~/.ssh/id_rsa
   hostname: antwebstudio.com
   user: eventuco
   port: 55000
-  deploy_path: ~/public_html/dev.antwebstudio.com/{{application}}
   name: ""
   theme: "{{application}}"
-  baseUrl: https://dev.antwebstudio.com/{{application}}
-  localhostDb:
+  localhostDb: "{{application}}"
   maintenance: true
   debug: false
