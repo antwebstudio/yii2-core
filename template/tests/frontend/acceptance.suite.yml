@@ -1,0 +1,15 @@
+actor: AcceptanceTester
+bootstrap: _bootstrap.php
+modules:
+    enabled:
+        - \tests\frontend\Helper\Acceptance
+        - Filesystem
+        - WebDriver:
+            url: http://localhost/ant/thewatcher/web
+            #url: http://betadev.ruangkongsi.org
+            browser: chrome
+            window_size: false          
+            capabilities:
+                chromeOptions:
+                    #args: ["--headless", "--disable-gpu"]
+                    w3c: false

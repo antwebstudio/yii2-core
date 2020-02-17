@@ -1,0 +1,15 @@
+actor: FunctionalTester
+modules:
+    enabled:
+        #- Filesystem
+        #- Yii2
+        #- PhpBrowser:
+        #    url: http://localhost/ant/ruangkongsi/web/
+        #- \tests\frontend\Helper\Functional
+        #- Asserts
+        #- REST:
+            #url: 'http://localhost/inspiren/yii2/projects/miningApp/api/v1/web/index-test.php/api/v1'
+            #depends: PhpBrowser
+    #config:
+       #Yii2:
+            #configFile: 'tests/config/functional.php'

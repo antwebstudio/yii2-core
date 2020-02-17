@@ -1,0 +1,22 @@
+# Codeception Test Suite Configuration
+#
+# Suite for acceptance tests.
+# Perform tests in browser using the WebDriver or PhpBrowser.
+# If you need both WebDriver and PHPBrowser tests - create a separate suite.
+
+actor: AcceptanceTester
+bootstrap: _bootstrap.php
+modules:
+    enabled:
+        - tests\backend\Helper\Acceptance
+        - tests\backend\Helper\Select2
+        - WebDriver:
+            url: http://localhost
+            #url: http://betadev.ruangkongsi.org
+            browser: chrome
+            window_size: false          
+            capabilities:
+                chromeOptions:
+                    #args: ["--headless", "--disable-gpu"]
+                    w3c: false
+    step_decorators: ~        
