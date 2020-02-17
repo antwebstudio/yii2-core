@@ -40,7 +40,7 @@ task('deploy:install', function () {
 task('db:download', function() {
 	if (askConfirmation('Are you sure to overwrite local database using live database ?')) {
 		set('liveFile', '{{application}}_'.date('Y-m-d-His').'.sql.gz');
-		set('liveFilePath', '{{project_path}}/frontend/web/{{liveFile}}');
+		set('liveFilePath', '{{project_path}}/web/{{liveFile}}');
 		
 		// Backup live db
 		run('{{bin/mysqldump}} -u {{liveDbUser}} -p"{{dbPassword}}" {{db}} | {{bin/gzip}} > {{liveFilePath}}');

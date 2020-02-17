@@ -28,6 +28,9 @@ $config = [
         ],
     ],
     'components' => [
+        'mutex' => [
+            'class' => 'yii\mutex\MysqlMutex',
+        ],
 		'encoder' => [
 			'class' => 'ant\components\Encoder',
 			'hashIdSalt' => env('HASHID_SALT'),
@@ -166,7 +169,7 @@ $config = [
         ],
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
-            'linkAssets' => env('LINK_ASSETS', false),
+            'linkAssets' => env('LINK_ASSETS'),
             'appendTimestamp' => YII_ENV_DEV,
         ],
         'user' => [

@@ -1,6 +1,7 @@
 <?php
 /* @var $this \yii\web\View */
 /* @var $content string */
+\rmrevin\yii\fontawesome\AssetBundle::register($this);
 
 $this->beginContent('@app/views/layouts/_clear.php')
 ?>

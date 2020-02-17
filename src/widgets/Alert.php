@@ -47,6 +47,8 @@ class Alert extends \yii\bootstrap\Widget
      * @var array the options for rendering the close button tag.
      */
     public $closeButton = [];
+	
+	public $body;
 
 
     public function init()
@@ -85,5 +87,21 @@ class Alert extends \yii\bootstrap\Widget
                 $session->removeFlash($type);
             }
         }
+		
+		if (isset($this->body)) {
+			if (isset(Yii::$app->params['bsVersion']) && Yii::$app->params['bsVersion'] >= 4) {
+				echo \yii\bootstrap4\Alert::widget([
+					'body' => $this->body,
+					'closeButton' => $this->closeButton,
+					'options' => $this->options,
+				]);
+			} else {
+				echo \yii\bootstrap\Alert::widget([
+					'body' => $this->body,
+					'closeButton' => $this->closeButton,
+					'options' => $this->options,
+				]);
+			}
+		}
     }
 }
