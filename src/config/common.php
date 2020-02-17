@@ -166,7 +166,7 @@ $config = [
         ],
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
-            'linkAssets' => env('LINK_ASSETS'),
+            'linkAssets' => env('LINK_ASSETS', false),
             'appendTimestamp' => YII_ENV_DEV,
         ],
         'user' => [
