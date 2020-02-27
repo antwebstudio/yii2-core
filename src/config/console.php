@@ -29,6 +29,7 @@ return [
             'migrationPath' => [
                 '@ant/migrations/db',
                 '@yii/rbac/migrations',
+				'@vendor/lajax/yii2-translate-manager/migrations',
 				'@project/migrations/db',
             ],
             'migrationNamespaces' => [

@@ -44,7 +44,9 @@ class Status extends \yii\base\Component {
     }
 	
 	public function checkTransitPermission($fromStatus, $toStatus) {
-		if (isset($this->statusTransit[$toStatus])) {
+		if ($fromStatus === $toStatus) {
+			return true;
+		} else if (isset($this->statusTransit[$toStatus])) {
 			if (is_callable($this->statusTransit[$toStatus])) {
 				return call_user_func_array($this->statusTransit[$toStatus], [$this->model, $fromStatus]);
 			}

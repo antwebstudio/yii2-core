@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 class AttachBehaviorBehavior extends Behavior {
 	const DEFAULT_NAME = 'attachBehavior';
 	
-	public $config = [];
+	public $config = ['@project/config/behaviors.php'];
 	
 	protected static $staticConfig = [];
 	

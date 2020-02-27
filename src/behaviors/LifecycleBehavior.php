@@ -67,7 +67,7 @@ class LifecycleBehavior extends \cebe\lifecycle\LifecycleBehavior {
 		$newStatus = $this->owner->getAttribute($this->statusAttribute);
 		
 		if ($this->getStatus()->checkTransitPermission($oldStatus, $newStatus) !== true) {
-			throw new \Exception('Transit of status is prohibited. ');
+			throw new \Exception('Transit of status from '.$oldStatus.' to '.$newStatus.' is prohibited. ');
 		}
 		return parent::handleBeforeSave();
 	}

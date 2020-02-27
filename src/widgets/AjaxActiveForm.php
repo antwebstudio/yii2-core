@@ -14,6 +14,8 @@ class AjaxActiveForm extends \yii\widgets\ActiveForm
 {
 	public $successBlock;
 	
+	public $successCallback;
+	
 	public $hideFormOnSuccess = true;
 	
 	public $resetFormOnSuccess = false;

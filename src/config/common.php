@@ -230,7 +230,21 @@ $config = [
             'use256BitesEncoding'=>false,
         ],
         'i18n' => [
-            'translations' => [
+			'translations' => env('TRANSLATE_MANAGER', false) ? [
+				'*' => [
+					'class' => 'yii\i18n\DbMessageSource',
+					'db' => 'db',
+					'sourceLanguage' => 'en-US', // Developer language
+					'sourceMessageTable' => '{{%language_source}}',
+					'messageTable' => '{{%language_translate}}',
+					'cachingDuration' => 86400,
+					'enableCaching' => true,
+					'on '.\yii\i18n\DbMessageSource::EVENT_MISSING_TRANSLATION => function($event) {
+						//$languageSource = new \lajax\translatemanager\models\LanguageSource();
+						//return $languageSource->insertLanguageItems([$event->category => [$event->message => $event->message]]);
+					}
+				],
+			] : [
                 'app'=>[
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath'=>'@ant/messages',
@@ -331,6 +345,12 @@ $config = [
         ],*/
     ],
 	'on beforeAction' => function($event) {
+		if (isset(\Yii::$app->session)) {
+			$language = \Yii::$app->session->get(\ant\language\Module::SESSION_LANGUAGE);
+			if (isset($language)) {
+				\Yii::$app->language = $language;
+			}
+		}
 		if (isset(\Yii::$app->mailer->syncMailer)) {
 			\Yii::$app->mailer->syncMailer->view = \Yii::$app->view;
 		}
