@@ -30,6 +30,16 @@ class File {
 		}
 	}
 	
+	public static function storeArray($fullPath, $array) {
+		file_put_contents($fullPath, '<?php return '.var_export($array, 1).';');
+	}
+	
+	public static function loadArray($fullPath, $errorIfFileNotExist = false) {
+		if (file_exists($fullPath)) {
+			return require $fullPath;
+		}
+	}
+	
 	public static function createFromPath($path) {
 		if (!isset($path) || $path == '') throw new \Exception('Cannot create from empty path. ');
 		

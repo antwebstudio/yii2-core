@@ -2,6 +2,7 @@
 return [
 	'id' => 'app-test',
 	'basePath' => dirname(__DIR__),
+    'bootstrap' => ['gii'],
 	'aliases' => [
 		'ant' => YII_APP_BASE_PATH.'/src',
 		//'api' => dirname(dirname(__DIR__)).'/src/api',
@@ -9,6 +10,12 @@ return [
 		'ant/moduleManager' => YII_APP_BASE_PATH.'/vendor/antweb/yii2-core/src/moduleManager',
 		'vendor' => YII_APP_BASE_PATH.'/vendor',
 		'@common/migrations' => '@vendor/antweb/yii2-core/src/migrations',
+		'project' => YII_PROJECT_BASE_PATH,
+	],
+	'modules' => [
+		'gii' => [
+			'class' => 'yii\gii\Module',
+		],
 	],
     'components' => [
         'mutex' => [
@@ -97,6 +104,20 @@ return [
 			'class' => 'yii\web\User',
             'identityClass' => 'ant\user\models\User',
         ],
+        'i18n' => [
+			'translations' => [
+				'*'=> [
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath'=>'@ant/messages',
+					'fileMap'=>[
+						'common'=>'common.php',
+						'backend'=>'backend.php',
+						'frontend'=>'frontend.php',
+					],
+					//'on missingTranslation' => ['\backend\modules\i18n\Module', 'missingTranslation']
+				],
+			],
+		],
 	],
 	'controllerMap' => [
 		'module' => [

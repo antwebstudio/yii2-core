@@ -185,6 +185,7 @@ class DateTime extends \DateTime {
 	
 	public function setToStringFormat($format) {
 		$this->_toStringFormat = $format;
+		return $this;
 	}
 	
 	public function getTimestamp() {

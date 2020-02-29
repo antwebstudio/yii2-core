@@ -20,6 +20,7 @@ beta:
   maintenance: false
   debug: true
   keep_releases: 1
+  useTranslateManager: false
   
 production:
   repository:
@@ -42,3 +43,4 @@ production:
   localhostDb: "{{application}}"
   maintenance: true
   debug: false
+  useTranslateManager: false

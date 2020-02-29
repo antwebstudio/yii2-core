@@ -43,6 +43,7 @@ class InitController extends \yii\console\Controller {
 		'baseUrl' => '',
 		'backendTheme' => 'adminlte3',
 		'theme' => '',
+		'useTranslateManager' => 'false',
 	];
 	
 	public function __get($name) {

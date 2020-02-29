@@ -3,7 +3,7 @@ namespace ant\helpers;
 
 class StringHelper
 {
-	public static function default($src, $default) {
+	public static function defaultStr($src, $default) {
 		return isset($src) ? $src : $default;
 	}
 	
@@ -11,7 +11,7 @@ class StringHelper
 		return \yii\helpers\Inflector::camel2Words($name);
 	}
 	
-	public static function forEach($array, $callback) {
+	public static function forEachStr($array, $callback) {
 		$string = '';
 		foreach ($array as $value) {
 			$string .= call_user_func_array($callback, [$value]);
