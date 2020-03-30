@@ -24,11 +24,10 @@ class SetupController extends Controller
 	];
 
     public $writablePaths = [
-        '@ant/runtime',
-        //'@frontend/runtime',
-        //'@frontend/web/assets',
-        //'@backend/runtime',
-        //'@backend/web/assets',
+        '@root/runtime',
+        '@root/web/assets',
+        '@root/web/admin/assets',
+		'@vendor/antweb/yii2-bootstrap4-extended/src/sass',
         '@storage/cache',
         '@storage/web/source'
     ];

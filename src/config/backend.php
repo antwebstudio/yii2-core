@@ -58,7 +58,16 @@ $config = [
                 'skin' => 'skin-black',
                 'asset' => '\ant\themes\\'.env('BACKEND_THEME', 'adminlte').'\assets\ThemeAsset',
                 'pathMap' => [
+				
+					// Widgets
+					'@vendor/antweb/yii2-payment/src/payment/widgets/views' => '@project/themes/'.env('THEME', 'default').'/views/modules/payment/widgets/views',
+					
+					// Backend theme
 					'@vendor/antweb/yii2-ecommerce/src/ecommerce/backend/views' => '@project/themes/backend/views/ecommerce',
+					'@vendor/antweb/yii2-ecommerce/src/order/backend/views' => '@project/themes/backend/views/order',
+					'@vendor/antweb/yii2-payment/src/payment/backend/views' => '@project/themes/backend/views/payment',
+					
+					// Backend 
 					'@app/views' => [
 						'@vendor/antweb/yii2-web/src/themes/'.env('BACKEND_THEME', 'adminlte').'/views',
 						'@vendor/antweb/yii2-web/src/backend/views',
@@ -79,6 +88,7 @@ $config = [
 					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-ecommerce/src/order/mails' => [
 						'@project/mails/order',
 					],
+					
                 ],
             ],
         ],

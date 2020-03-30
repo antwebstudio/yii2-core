@@ -19,7 +19,7 @@ class Status extends \yii\base\Component {
     }
 	
 	public function getHtml() {
-		return '<span class="'.$this->getStatusSpanCss().'">'.$this->getText().'</span>';
+		return '<span class="'.$this->getStatusSpanCss().'">{status}</span>';
 	}
 
     public function getText() {

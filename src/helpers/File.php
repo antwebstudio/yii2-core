@@ -48,6 +48,12 @@ class File {
 		return $file;
 	}
 	
+	public static function ensureDir($path, $mode = 0777) {
+		if (!file_exists($path)) {
+			mkdir($path, $mode, true);
+		}
+	}
+	
 	protected static function match($maskes, $match) {
 		foreach ($maskes as $mask) {
 			if (strcasecmp($mask, $match) === 0) {

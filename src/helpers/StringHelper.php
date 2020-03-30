@@ -1,7 +1,7 @@
 <?php
 namespace ant\helpers;
 
-class StringHelper
+class StringHelper extends \yii\helpers\StringHelper
 {
 	public static function defaultStr($src, $default) {
 		return isset($src) ? $src : $default;

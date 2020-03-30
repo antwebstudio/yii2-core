@@ -175,7 +175,7 @@ class SerializableDataValidator extends Validator {
 				if (!isset($model->{$attribute})) $model->{$attribute} = [];
 				//throw new \Exception('Attribute "'.$attribute.'" is not an array. ');
 			}
-			$tempModel = \yii\base\DynamicModel::validateData(ArrayHelper::merge($this->dynamicAttributes, $model->{$attribute}), $this->rules);
+			$tempModel = \yii\base\DynamicModel::validateData(ArrayHelper::merge($this->dynamicAttributes, (array) $model->{$attribute}), $this->rules);
 			
 			if ($tempModel->hasErrors()){
 				foreach ($tempModel->errors as $key => $message) {

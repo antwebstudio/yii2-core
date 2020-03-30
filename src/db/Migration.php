@@ -26,12 +26,31 @@ class Migration extends \yii\db\Migration {
 		return $this->primaryKey()->unsigned();
 	}
 	
-	protected function morphId() {
-		return $this->integer()->unsigned()->null()->defaultValue(null);
+	protected function autoId() {
+		return $this->primaryKey()->unsigned();
 	}
 	
-	protected function morphClass() {
-		return $this->integer()->unsigned()->null()->defaultValue(null);
+	protected function foreignId($nullable = true) {
+		$col = $this->integer()->unsigned();
+		if ($nullable) $col->null()->defaultValue(null);
+		
+		return $col;
+	}
+	
+	protected function morphId($nullable = true) {
+		return $this->foreignId($nullable);
+	}
+	
+	protected function morphClass($nullable = true) {
+		return $this->foreignId($nullable);
+	}
+	
+	protected function nullableMorphClass() {
+		return $this->morphClass();
+	}
+	
+	protected function nullableMorphId() {
+		return $this->morphId();
 	}
 	
 	protected function createIndexFor($columns) {

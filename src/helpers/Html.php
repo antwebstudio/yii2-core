@@ -1,7 +1,12 @@
 <?php
 namespace ant\helpers;
 
-class Html extends \yii\helpers\Html {	
+class Html extends \yii\helpers\Html {
+	public static function notEmpty($str) {
+		$emptyString = ['&nbsp;'];
+		return trim(str_replace($emptyString, '', strip_tags($str))) != '';
+	}
+	
 	public static function removeEmptyParagraph($str) {
 		if (YII_DEBUG) throw new \Exception('DEPRECATED');
 
@@ -26,6 +31,7 @@ class Html extends \yii\helpers\Html {
 	}
 	
 	public static function video($url, $options = []) {
+		if (!isset($options['controls']) || $options['controls'] !== false) $options['controls'] = '';
 		return self::tag('video', self::tag('source', null, ['src' => $url]), $options);
 	}
 }

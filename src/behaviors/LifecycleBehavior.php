@@ -23,11 +23,11 @@ class LifecycleBehavior extends \cebe\lifecycle\LifecycleBehavior {
     }
 	
 	public function getStatusHtml($attribute = null) {
-		return $this->getStatus($attribute)->getHtml();
+		return \Yii::t('lifecycle', $this->getStatus($attribute)->getHtml(), ['status' => $this->owner->getStatusText()]);
 	}
 
     public function getStatusText($attribute = null) {
-        return $this->getStatus($attribute)->getText();
+        return \Yii::t('lifecycle', $this->getStatus($attribute)->getText());
     }
 
     public function getStatus($attribute = null) {

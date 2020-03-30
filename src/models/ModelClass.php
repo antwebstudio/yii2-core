@@ -47,6 +47,7 @@ class ModelClass extends \yii\db\ActiveRecord
 	}
 
     public static function getClassName($modelClassId) {
+		if (!isset($modelClassId)) throw new \Exception('Class ID cannot be null. ');
         return self::findOne($modelClassId)->class_name;
     }
 

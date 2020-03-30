@@ -74,6 +74,7 @@
 		"install"
     ],
     "autoload": {
+		"classmap": ["src/"],
         "psr-4": {
 			"ant\\": "src",
 			"tests\\" : "tests"

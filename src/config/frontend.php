@@ -63,6 +63,7 @@ $config = [
         ],
 		'maintenanceMode' => [
 			'class' => 'brussens\maintenance\MaintenanceMode', // Component class namespace
+			'commandPath' => '@runtime/maintenance',
 			'title' => 'Under Maintenance', // Page title
 			'enabled' => env('MAINTENANCE'), // Mode status
 			'route' => 'maintenance/index', // Route to action

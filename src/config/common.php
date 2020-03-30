@@ -47,6 +47,14 @@ $config = [
 			'rules' => [
 			],
 		],
+        'frontendUrlManager' => [
+            'class' => 'yii\web\urlManager',
+            //'baseUrl' => @frontendUrl,
+            'baseUrl' => Yii::getAlias('@frontendUrl'),
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [],
+        ],
         'urlManagerFrontEnd' => [
             'class' => 'yii\web\urlManager',
             //'baseUrl' => @frontendUrl,
@@ -152,6 +160,7 @@ $config = [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
+                    'except' => ['yii\web\HttpException:404'],
                 ],
                 [
                     'class' => 'ant\log\EmailTarget',
@@ -307,6 +316,7 @@ $config = [
             'password' => env('DB_PASSWORD'),
             'tablePrefix' => env('DB_TABLE_PREFIX', ''),
             'charset' => 'utf8mb4',
+			'enableProfiling' => !YII_ENV_PROD || YII_DEBUG,
             'enableSchemaCache' => YII_ENV_PROD,
 			'on afterOpen' => function($event) { 
 				$now = new \DateTime();
@@ -344,10 +354,16 @@ $config = [
         ],*/
     ],
 	'on beforeAction' => function($event) {
+		$alias = [
+			'zh-MY' => 'zh-CN',
+		];
 		if (isset(\Yii::$app->session)) {
+			$activeLanguages = array_keys(\ant\language\models\Language::getLanguageNames(true));
 			$language = \Yii::$app->session->get(\ant\language\Module::SESSION_LANGUAGE, env('SOURCE_LANGUAGE', 'en-US'));
-			if (isset($language)) {
-				\Yii::$app->language = $language;
+			if (isset($language) && in_array($language, $activeLanguages)) {
+				\Yii::$app->language = isset($alias[$language]) ? $alias[$language] : $language;
+			} else {
+				\Yii::$app->language = \Yii::$app->sourceLanguage;
 			}
 		}
 		if (isset(\Yii::$app->mailer->syncMailer)) {

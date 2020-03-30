@@ -1,6 +1,7 @@
 <?php
 namespace ant\components;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 
 class MenuManager extends \yii\base\Component {

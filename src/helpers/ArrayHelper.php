@@ -38,7 +38,7 @@ class ArrayHelper extends \yii\helpers\ArrayHelper
 	public static function each($arrays, $callback) {
 		$return = [];
 		foreach ($arrays as $key => $value) {
-			$return[$key] = call_user_func_array($callback, [$value]);
+			$return[$key] = call_user_func_array($callback, [$value, $key]);
 		}
 		return $return;
 	}
