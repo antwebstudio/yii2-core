@@ -11,9 +11,10 @@ class MigrateController extends \yii\console\controllers\MigrateController {
 	public $migrationType = 'db';
 	
 	public function init() {
-		$this->migrationNamespaces = ArrayHelper::merge($this->manager->getMigrationNamespaces($this->migrationType), (array) $this->migrationNamespaces);
-		$this->migrationPath = ArrayHelper::merge($this->manager->getMigrationPath($this->migrationType), (array) $this->migrationPath);
-		
+		if (isset($this->manager)) {
+			$this->migrationNamespaces = ArrayHelper::merge($this->manager->getMigrationNamespaces($this->migrationType), (array) $this->migrationNamespaces);
+			$this->migrationPath = ArrayHelper::merge($this->manager->getMigrationPath($this->migrationType), (array) $this->migrationPath);
+		}
 		return parent::init();
 	}
 	
@@ -44,6 +45,6 @@ class MigrateController extends \yii\console\controllers\MigrateController {
 	}
 	
 	protected function getManager() {
-		return Yii::$app->moduleManager;
+		return Yii::$app->get('moduleManager', false);
 	}
 }

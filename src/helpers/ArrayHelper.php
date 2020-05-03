@@ -23,6 +23,20 @@ class ArrayHelper extends \yii\helpers\ArrayHelper
 		return array_combine($keyArray, $valueArray);
 	}
 	
+	public static function count($array, $callback = null) {
+		if (isset($callback)) {
+			$count = 0;
+			foreach ($array as $key => $value) {
+				if (call_user_func_array($callback, [$value, $key])) {
+					$count++;
+				}
+			}
+			return $count;
+		} else {
+			return count($array);
+		}
+	}
+	
 	public static function trim($value) {
 		if (is_array($value)) {
 			$return = [];

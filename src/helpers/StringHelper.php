@@ -3,6 +3,19 @@ namespace ant\helpers;
 
 class StringHelper extends \yii\helpers\StringHelper
 {
+	public static function containsMb4(string $str): bool
+    {
+        $length = strlen($str);
+
+        for ($i = 0; $i < $length; $i++) {
+            if (ord($str[$i]) >= 240) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 	public static function defaultStr($src, $default) {
 		return isset($src) ? $src : $default;
 	}

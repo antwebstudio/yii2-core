@@ -445,6 +445,9 @@ class ModuleManager extends \yii\base\Component
 	}
 	
 	protected function initModuleAutoloadPaths() {
+		$path = Yii::getAlias('@vendor/antweb/modules.php');
+		if (!file_exists($path)) throw new \Exception('Module autoload file is not exist: '.$path);
+		
 		$modules = require Yii::getAlias('@vendor/antweb/modules.php');
 		
 		foreach (array_keys($modules) as $composerName) {

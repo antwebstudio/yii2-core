@@ -60,15 +60,15 @@ return [
 				$event->sender->createCommand("SET time_zone='$offset';")->execute(); 
 			},
         ],
-        'moduleManager' => [
-            'class' => 'ant\moduleManager\components\ModuleManager',
+        /*'moduleManager' => [
+            'class' => 'ant\moduleManager\ModuleManager',
 			'moduleAutoloadPaths' => [
 				'@ant', 
 				'@vendor/inspirenmy/yii2-ecommerce/src/common/modules', 
 				'@vendor/inspirenmy/yii2-user/src/common/modules',
 				'@vendor/inspirenmy/yii2-core/src/common/modules',
 			],
-        ],
+        ],*/
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],
