@@ -122,6 +122,7 @@ $config = [
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
+			'cache' => YII_ENV_PROD ? 'cache' : null,
             'defaultRoles' => [\ant\rbac\Role::ROLE_GUEST, \ant\rbac\Role::ROLE_USER],
         ],
 		/*'config' => [
@@ -378,9 +379,9 @@ if (YII_LOCALHOST) {
         'class'=>'yii\gii\Module'
     ];
 
-    $config['components']['cache'] = [
+    /*$config['components']['cache'] = [
         'class' => 'yii\caching\DummyCache'
-    ];
+    ];*/
 	
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [

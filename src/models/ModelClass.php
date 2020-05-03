@@ -43,17 +43,17 @@ class ModelClass extends \yii\db\ActiveRecord
 	
 	public static function getModel($modelClassId, $modelId) {
 		$className = self::getClassName($modelClassId);
-		return $className::findOne($modelId);
+		return $className::find()->alias('morphModel')->cache(7200)->andWhere(['morphModel.id' => $modelId])->one();
 	}
 
     public static function getClassName($modelClassId) {
 		if (!isset($modelClassId)) throw new \Exception('Class ID cannot be null. ');
-        return self::findOne($modelClassId)->class_name;
+        return self::find()->cache(7200)->andWhere(['id' => $modelClassId])->one()->class_name;
     }
 
     public static function getClassId($modelClassName) {
 		$modelClassName = is_object($modelClassName) ? get_class($modelClassName) : $modelClassName;
-        $model = self::find()->andWhere(['class_name' => $modelClassName])->one();
+        $model = self::find()->cache(7200)->andWhere(['class_name' => $modelClassName])->one();
         if (!isset($model)) {
             $model = new self;
             $model->class_name = $modelClassName;

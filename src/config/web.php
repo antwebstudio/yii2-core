@@ -51,7 +51,7 @@ $config = [
 
 
 // Cannot put in common as this will cause console error - console don't have request->getIp
-if (!YII_ENV_TEST && YII_ENV_DEV) {
+if (!YII_ENV_TEST && (YII_DEBUG || YII_ENV_DEV)) {
     // configuration adjustments for 'dev' environment
 	$config['bootstrap'][] = 'debug';
 	$config['modules']['debug'] = [
