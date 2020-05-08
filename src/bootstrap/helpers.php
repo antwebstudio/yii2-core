@@ -12,6 +12,12 @@ function __t($string) {
 	return $string;
 }
 
+function deprecate($message = '') {
+	if (!YII_ENV_PROD) {
+		throw new \Exception('DEPRECATED: '.$message);
+	}
+}
+
 
 /**
  * Debug function
