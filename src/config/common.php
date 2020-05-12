@@ -354,6 +354,11 @@ $config = [
             }
         ],*/
     ],
+	'container' => [
+		'definitions' => [
+			\yii\widgets\LinkPager::class => \yii\bootstrap4\LinkPager::class,
+		],
+	],
 	'on beforeAction' => function($event) {
 		$alias = [
 			'zh-MY' => 'zh-CN',

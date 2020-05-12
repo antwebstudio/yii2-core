@@ -66,6 +66,7 @@ $config = [
 					'@vendor/antweb/yii2-ecommerce/src/ecommerce/backend/views' => '@project/themes/backend/views/ecommerce',
 					'@vendor/antweb/yii2-ecommerce/src/order/backend/views' => '@project/themes/backend/views/order',
 					'@vendor/antweb/yii2-payment/src/payment/backend/views' => '@project/themes/backend/views/payment',
+					'@vendor/antweb/yii2-dashboard/src/dashboard/backend/views' => '@project/themes/backend/views/dashboard',
 					
 					// Backend 
 					'@app/views' => [
