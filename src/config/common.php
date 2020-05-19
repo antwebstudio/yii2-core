@@ -192,11 +192,11 @@ $config = [
         ],
         'frontendCache' => [
             'class' => 'yii\caching\FileCache',
-            'cachePath' => '@runtime/frontend/cache'
+            'cachePath' => '@runtime/../frontend/cache'
         ],
         'backendCache' => [
             'class' => 'yii\caching\FileCache',
-            'cachePath' => '@runtime/backend/cache'
+            'cachePath' => '@runtime/../backend/cache'
         ],
         'fileStorage' => [
             'class' => '\trntv\filekit\Storage',

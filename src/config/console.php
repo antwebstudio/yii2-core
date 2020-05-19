@@ -3,7 +3,7 @@
 return [
     'id' => 'app-console',
     'basePath' => YII_APP_BASE_PATH,
-	'runtimePath' => YII_APP_BASE_PATH.'/runtime', // Should NOT set to runtime/console or else php yii cache/flush-all will fail
+	'runtimePath' => YII_APP_BASE_PATH.'/runtime/console',
     'bootstrap' => ['log'],
     'controllerNamespace' => 'ant\console\controllers',
     'controllerMap' => [
