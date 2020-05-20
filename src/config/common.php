@@ -363,7 +363,7 @@ $config = [
 		$alias = [
 			'zh-MY' => 'zh-CN',
 		];
-		if (isset(\Yii::$app->session)) {
+		if (isset(\Yii::$app->session) && Yii::$app->getModule('translatemanager')) {
 			$activeLanguages = array_keys(\ant\language\models\Language::getLanguageNames(true));
 			$language = \Yii::$app->session->get(\ant\language\Module::SESSION_LANGUAGE, env('SOURCE_LANGUAGE', 'en-US'));
 			if (isset($language) && in_array($language, $activeLanguages)) {

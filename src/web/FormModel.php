@@ -2,7 +2,7 @@
 namespace ant\web;
 
 class FormModel extends \ant\base\FormModel {
-	
+	protected $_formAttributes = [];
 
     /*
     'username' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Enter username...']],
@@ -10,9 +10,15 @@ class FormModel extends \ant\base\FormModel {
     'rememberMe' => ['type'=>Form::INPUT_CHECKBOX],
     */
     public function getFormAttributes($name = null) {
-		return [
-		];
+		return $this->_formAttributes;
     }
+	
+	public function setFormAttributes($attributes) {
+		if (is_callable($attributes)) {
+			$attributes = call_user_func_array($attributes, [$this]);
+		}
+		$this->_formAttributes = $attributes;
+	}
 	
 	public function getGridFormRows($name = null) {
 

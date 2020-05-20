@@ -144,6 +144,13 @@ class FormModel extends MultiModel {
 	protected function models() {
         return $this->configs();
 	}
+	
+	public function setModels($models) {
+		if (is_callable($models)) {
+			$models = call_user_func_array($models, [$this]);
+		}
+		return parent::setModels($models);
+	}
 
     public function hasModelConfigured($name) {
         return isset($this->models[$name]);
