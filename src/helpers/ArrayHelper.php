@@ -57,6 +57,14 @@ class ArrayHelper extends \yii\helpers\ArrayHelper
 		return $return;
 	}
 	
+	public static function implode($delimiter, $array, $callback = null) {
+		if (isset($callback)) {
+			return implode($delimiter, static::each($array, $callback));
+		} else {
+			return implode($delimiter, $array);
+		}
+	}
+	
 	public static function allKeysExists($keys, $array, $caseSensitive = true) {
 		$keys = (array) $keys;
 		foreach ($keys as $key) {

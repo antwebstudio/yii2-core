@@ -77,9 +77,13 @@ $primaryColor = '#fe0c03';
 		<table class="table table-mail" style="width:100%; margin-top:10px;">
 			<tr>
 				<td align="center" class="logo" style="padding:15px 3px; display: table-cell!important" colspan="5">
+					<?php /*
 					<a title="<?= Yii::$app->name ?>" href="<?= Url::base(true)  ?>" style="color:#337ff1">
 						<img src="<?= $this->theme->getUrl('images/logo.png') ?>" alt="<?= Yii::$app->name ?>" />
+						
 					</a>
+					*/?>
+					<?= Yii::$app->name ?>
 				</td>
 			</tr>
 			<tr>
@@ -103,7 +107,7 @@ $primaryColor = '#fe0c03';
 			<tr>
 				<td colspan="5" class="footer" align="center" style="padding:7px 3px; display: table-cell!important; ">
 					<span>
-						&copy; <?= date('Y') ?> <?= Yii::$app->name ?>
+						&copy; <?= date('Y') ?> <a title="<?= Yii::$app->name ?>" href="<?= Yii::$app->frontendUrlManager->createAbsoluteUrl('/')  ?>"><?= Yii::$app->name ?></a>
 						<?php /*
 						<?= Yii::t('app', Yii::$app->config->getAppConfig('copyright'), array('{name}' => Yii::$app->name));?>
 						*/ ?>

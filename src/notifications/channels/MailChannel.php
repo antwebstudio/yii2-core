@@ -18,7 +18,14 @@ class MailChannel extends \tuyakhov\notifications\channels\MailChannel
 			$to = isset($this->developerEmail) ? $this->developerEmail : $from;
 		}
         $message = $notification->exportFor('mail');
-		$from = isset($message->from) ? $message->from : $this->from;
+		
+		if (isset($message->from)) {
+			$from = $message->from;
+		} else if (is_callable($this->from)) {
+			$from = call_user_func_array($this->from, [$recipient, $notification]);
+		} else {
+			$from = $this->from;
+		}
 		
         return $this->mailer->compose($message->view, $message->viewData)
             ->setFrom($from)

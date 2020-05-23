@@ -3,6 +3,7 @@
 namespace ant\models;
 
 use Yii;
+use yii\caching\TagDependency;
 
 /**
  * This is the model class for table "em_model_class".
@@ -12,6 +13,8 @@ use Yii;
  */
 class ModelClass extends \yii\db\ActiveRecord
 {
+	const CACHE_TAG_PREFIX = 'model_class_';
+	
     /**
      * @inheritdoc
      */
@@ -53,11 +56,18 @@ class ModelClass extends \yii\db\ActiveRecord
 
     public static function getClassId($modelClassName) {
 		$modelClassName = is_object($modelClassName) ? get_class($modelClassName) : $modelClassName;
-        $model = self::find()->cache(7200)->andWhere(['class_name' => $modelClassName])->one();
+		
+		$tagName = static::CACHE_TAG_PREFIX.'_'.$modelClassName;
+		
+		$dependency = new TagDependency(['tags' => $tagName]);
+		
+        $model = self::find()->cache(7200, $dependency)->andWhere(['class_name' => $modelClassName])->one();
         if (!isset($model)) {
             $model = new self;
             $model->class_name = $modelClassName;
             if (!$model->save()) throw new \Exception(print_r($model->errors, 1));
+			
+			TagDependency::invalidate(Yii::$app->cache, $tagName);
         }
         return $model->id;
     }
