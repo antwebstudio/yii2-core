@@ -16,6 +16,8 @@ class SerializeBehavior extends Behavior
 	
     public function events()
     {
+		deprecate(); // 2020/4/30
+		
         return [
             ActiveRecord::EVENT_BEFORE_INSERT => 'encode',
             ActiveRecord::EVENT_BEFORE_UPDATE => 'encode',

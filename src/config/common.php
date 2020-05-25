@@ -47,6 +47,14 @@ $config = [
 			'rules' => [
 			],
 		],
+        'backendUrlManager' => [
+            'class' => 'yii\web\urlManager',
+            //'baseUrl' => @frontendUrl,
+            'baseUrl' => Yii::getAlias('@backendUrl'),
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [],
+        ],
         'frontendUrlManager' => [
             'class' => 'yii\web\urlManager',
             //'baseUrl' => @frontendUrl,

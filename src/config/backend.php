@@ -71,6 +71,7 @@ $config = [
 					
 					// Backend 
 					'@app/views' => [
+						'@project/themes/backend/views',
 						'@vendor/antweb/yii2-web/src/themes/'.env('BACKEND_THEME', 'adminlte').'/views',
 						'@vendor/antweb/yii2-web/src/backend/views',
 						'@vendor/antweb/yii2-core/src/views',

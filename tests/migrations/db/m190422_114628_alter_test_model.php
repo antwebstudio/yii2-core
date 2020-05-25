@@ -15,6 +15,7 @@ class m190422_114628_alter_test_model extends Migration
     {
 		
         $this->addColumn($this->tableName, 'dynamic_form_id', $this->integer()->unsigned());
+        $this->addColumn($this->tableName, 'options', $this->text());
 		
 		$this->addForeignKeyTo('{{%dynamic_form}}', 'dynamic_form_id', 'cascade', 'cascade');
     }
@@ -24,7 +25,10 @@ class m190422_114628_alter_test_model extends Migration
      */
     public function safeDown()
     {
+		$this->dropForeignKeyTo('{{%dynamic_form}}', 'dynamic_form_id');
+		
 		$this->dropColumn($this->tableName, 'dynamic_form_id');
+		$this->dropColumn($this->tableName, 'options');
     }
 
     /*

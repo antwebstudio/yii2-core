@@ -23,7 +23,8 @@
         "yii2tech/ar-softdelete": "^1.0",
         "tuyakhov/yii2-notifications": "*",
         "cebe/yii2-lifecycle-behavior": "^2.0",
-		"hashids/hashids": "2.0"
+		"hashids/hashids": "2.0",
+        "yii2mod/collection": "*"
 	},
     "require-dev": {
         "phpstan/phpstan": "^0.10.3",
