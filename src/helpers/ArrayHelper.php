@@ -3,6 +3,10 @@ namespace ant\helpers;
 
 class ArrayHelper extends \yii\helpers\ArrayHelper
 {
+	public static function toJson($array) {
+		return json_encode($array);
+	}
+	
 	public static function getFirst($array, $count) {
 		$chunked = array_chunk($array, $count, true);
 		return isset($chunked[0]) ? $chunked[0] : [];

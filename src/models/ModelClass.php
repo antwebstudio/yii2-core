@@ -67,7 +67,7 @@ class ModelClass extends \yii\db\ActiveRecord
             $model->class_name = $modelClassName;
             if (!$model->save()) throw new \Exception(print_r($model->errors, 1));
 			
-			TagDependency::invalidate(Yii::$app->cache, $tagName);
+			if (isset(Yii::$app->cache)) TagDependency::invalidate(Yii::$app->cache, $tagName);
         }
         return $model->id;
     }

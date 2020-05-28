@@ -14,7 +14,7 @@ class MailChannel extends \tuyakhov\notifications\channels\MailChannel
          * @var $message MailMessage
          */
 		$to = $recipient->routeNotificationFor('mail');
-		if (YII_DEBUG) {
+		if (YII_DEBUG || !YII_ENV_PROD) {
 			$to = isset($this->developerEmail) ? $this->developerEmail : $from;
 		}
         $message = $notification->exportFor('mail');

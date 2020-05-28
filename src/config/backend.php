@@ -68,6 +68,7 @@ $config = [
 					'@vendor/antweb/yii2-payment/src/payment/backend/views' => '@project/themes/backend/views/payment',
 					'@vendor/antweb/yii2-dashboard/src/dashboard/backend/views' => '@project/themes/backend/views/dashboard',
 					'@vendor/antweb/yii2-core-module/src/category/backend/views' => '@project/themes/backend/views/category',
+					'@vendor/antweb/yii2-cms/src/cms/backend/views' => '@project/themes/backend/views/cms',
 					
 					// Backend 
 					'@app/views' => [
@@ -90,6 +91,9 @@ $config = [
 					
 					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-ecommerce/src/order/mails' => [
 						'@project/mails/order',
+					],
+					env('PACKAGES_PATH', '@vendor/antweb').'/yii2-user/src/user/mails' => [
+						'@project/mails/user',
 					],
 					
                 ],

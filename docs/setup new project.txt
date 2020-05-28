@@ -1,0 +1,17 @@
+init project
+===============
+1. create/copy composer.json
+2. run: composer install
+3. run: composer run init-project
+4. add: 
+    'controllerMap' => [
+        'setup' => [
+            'class' => 'ant\console\controllers\SetupController',
+            'modules' => ['user', 'cms', 'category', 'tag', 'comment', 'stat', 'support'],
+        ],
+	],
+	
+	to config/console.php
+5. commit files
+6. create mysql database
+7. configure hosts.yml

@@ -34,15 +34,18 @@ function d($var,$caller=null)
     echo '</pre>';
 }
 
-/**
- * Debug function with die() after
- * dd($var);
- */
-function dd($var)
-{
-    //$caller = array_shift(debug_backtrace(1));
-    d($var);
-    die();
+if (!function_exists('dd')) {
+
+	/**
+	 * Debug function with die() after
+	 * dd($var);
+	 */
+	function dd($var)
+	{
+		//$caller = array_shift(debug_backtrace(1));
+		d($var);
+		die();
+	}
 }
 
 /**
