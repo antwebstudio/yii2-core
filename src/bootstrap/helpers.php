@@ -18,34 +18,34 @@ function deprecate($message = '') {
 	}
 }
 
-
-/**
- * Debug function
- * d($var);
- */
-function d($var,$caller=null)
-{
-    if(!isset($caller)){
-        //$caller = array_shift(debug_backtrace(1));
+if (!function_exists('dd')) {
+    /**
+     * Debug function
+     * d($var);
+     */
+    function d($var,$caller=null)
+    {
+        if(!isset($caller)){
+            //$caller = array_shift(debug_backtrace(1));
+        }
+        //echo '<code>File: '.$caller['file'].' / Line: '.$caller['line'].'</code>';
+        echo '<pre>';
+        yii\helpers\VarDumper::dump($var, 10, true);
+        echo '</pre>';
     }
-    //echo '<code>File: '.$caller['file'].' / Line: '.$caller['line'].'</code>';
-    echo '<pre>';
-    yii\helpers\VarDumper::dump($var, 10, true);
-    echo '</pre>';
 }
 
 if (!function_exists('dd')) {
-
-	/**
-	 * Debug function with die() after
-	 * dd($var);
-	 */
-	function dd($var)
-	{
-		//$caller = array_shift(debug_backtrace(1));
-		d($var);
-		die();
-	}
+    /**
+     * Debug function with die() after
+     * dd($var);
+     */
+    function dd($var)
+    {
+        //$caller = array_shift(debug_backtrace(1));
+        d($var);
+        die();
+    }
 }
 
 /**
@@ -89,28 +89,31 @@ function activeTextinput($form, $model, $attribute, $inputOptions = [], $fieldOp
     return $form->field($model, $attribute, $fieldOptions)->textInput($inputOptions);
 }
 
-/**
- * @param string $key
- * @param mixed $default
- * @return mixed
- */
-function env($key, $default = false) {
 
-    $value = getenv($key);
+if (!function_exists('env')) {
+    /**
+     * @param string $key
+     * @param mixed $default
+     * @return mixed
+     */
+    function env($key, $default = false) {
 
-    if ($value === false) {
-        return $default;
+        $value = getenv($key);
+
+        if ($value === false) {
+            return $default;
+        }
+
+        switch (strtolower($value)) {
+            case 'true':
+            case '(true)':
+                return true;
+
+            case 'false':
+            case '(false)':
+                return false;
+        }
+
+        return $value;
     }
-
-    switch (strtolower($value)) {
-        case 'true':
-        case '(true)':
-            return true;
-
-        case 'false':
-        case '(false)':
-            return false;
-    }
-
-    return $value;
 }

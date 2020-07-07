@@ -21,6 +21,7 @@ class ConfigBuilder {
 				YII_PROJECT_BASE_PATH . '/config/web-backend.php',
 			],
 			'cli-console' => [
+				YII_PROJECT_BASE_PATH . '/config/common.php',
 				dirname(__DIR__) . '/config/cli-console.php',
 				YII_PROJECT_BASE_PATH . '/config/console.php',
 			],
