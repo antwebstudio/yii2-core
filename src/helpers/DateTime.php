@@ -123,6 +123,10 @@ class DateTime extends \DateTime {
 		$datetime = self::createFromFormat($dateFormat.' '.$timeFormat, $fullString);
 		return $datetime;
 	}
+
+	public static function create($string, $timezone = null) {
+		return new self($string, $timezone);
+	}
 	
 	public static function createFromFormat($format, $time, $object = null) {
 		if (isset($object)) {

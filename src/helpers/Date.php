@@ -13,6 +13,18 @@ class Date {
 			$this->_date = date('Y-m-d');
 		}
 	}
+
+	public function getYear() {
+		return $this->format('Y');
+	}
+	
+	public function getMonth() {
+		return $this->format('m');
+	}
+	
+	public function getDay() {
+		return $this->format('d');
+	}
 	
 	public function cloneIt() {
 		return new self($this->_date);

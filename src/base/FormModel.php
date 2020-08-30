@@ -145,7 +145,7 @@ class FormModel extends MultiModel {
         return $this->configs();
 	}
 	
-	public function setModels($models) {
+	public function setModels(array $models) {
 		if (is_callable($models)) {
 			$models = call_user_func_array($models, [$this]);
 		}
