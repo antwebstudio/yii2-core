@@ -79,6 +79,9 @@
         "psr-4": {
 			"ant\\": "src",
 			"tests\\" : "tests"
-		}
+		},
+        "files": [
+            "src/helpers.php"
+        ]
     }
 }
