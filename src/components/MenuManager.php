@@ -36,6 +36,10 @@ class MenuManager extends \yii\base\Component {
 		return [
 		];
 	}
+
+	public function getMenuByUrlQuery() {
+		return $this->getMenu(Yii::$app->request->get('tab'));
+	}
 	
 	public function isItemActive($item, $currentRoute)
     {

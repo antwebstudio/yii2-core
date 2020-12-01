@@ -1,4 +1,5 @@
 <?php
+use ant\helpers\Collection;
 
 class Ant {
 	public static function call($callback, $params = []) {
@@ -10,5 +11,9 @@ class Ant {
 	
 	public static function config() {
 		
+	}
+
+	public static function collect($array) {
+		return new \ant\helpers\Collection($array);
 	}
 }
