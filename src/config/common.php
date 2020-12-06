@@ -123,6 +123,7 @@ $config = [
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-library/src',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-importer/src',
 				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-web/src',
+				env('PACKAGES_PATH', '@vendor/antweb').'/yii2-token/src',
 			],
         ],
         'userConfig' => [
