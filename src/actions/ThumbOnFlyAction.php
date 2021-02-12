@@ -7,9 +7,8 @@ use yii\helpers\FileHelper;
 class ThumbOnFlyAction extends \yii\base\Action {
 	public $url;
 	
-	public function run($url, $width = null, $height = null, $fitType = 'fit', $position = null) {
-		$img = \ant\file\models\FileAttachment::generateThumbnail($url, $width, $height, $fitType, $position);
-		
+	public function run($url, $width = null, $height = null, $fitType = 'fit', $position = null, $width2 = null, $height2 = null) {
+		$img = \ant\file\models\FileAttachment::generateThumbnail($url, $width, $height, $fitType, $position, $width2, $height2);
 		if (!is_object($img)) $img = \Intervention\Image\ImageManagerStatic::make($img);
 		
 		$response = \Yii::$app->getResponse();
