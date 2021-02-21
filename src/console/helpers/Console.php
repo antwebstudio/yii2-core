@@ -1,11 +1,11 @@
 <?php
-namespace console\helpers;
+namespace ant\console\helpers;
 
 use yii\helpers\ArrayHelper;
 
 use Seld\CliPrompt\CliPrompt;
 
-class Console extends \yii\helpers\Console
+class Console extends \ant\helpers\Console
 {
     public static function silentPrompt($text, $options = [])
     {

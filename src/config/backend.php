@@ -69,6 +69,10 @@ $config = [
 					'@vendor/antweb/yii2-dashboard/src/dashboard/backend/views' => '@project/themes/backend/views/dashboard',
 					'@vendor/antweb/yii2-core-module/src/category/backend/views' => '@project/themes/backend/views/category',
 					'@vendor/antweb/yii2-cms/src/cms/backend/views' => '@project/themes/backend/views/cms',
+                    '@vendor/antweb/yii2-member/src/member/backend/views' => '@project/themes/backend/views/member',
+                    '@vendor/antweb/yii2-user/src/user/backend/views' => '@project/themes/backend/views/user',
+                    '@vendor/antweb/yii2-subscription/src/subscription/backend/views' => '@project/themes/backend/views/subscription',
+                    '@vendor/antweb/yii2-library/src/library/backend/views' => '@project/themes/backend/views/library',
 					
 					// Backend 
 					'@app/views' => [
