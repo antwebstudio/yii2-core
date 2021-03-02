@@ -12,4 +12,14 @@ class ExpirableQueryBehavior extends DateTimeAttributeQueryBehavior {
 		return $this->owner->joinWith('expirationModel expirationModel')
 			->andWhereNewerThanNow('expirationModel.expire_at');
 	}
+
+	public function expireLast() {
+		return $this->owner->joinWith('expirationModel expirationModel')
+			->orderBy('expirationModel.expire_at desc');
+	}
+
+	public function expireFirst() {
+		return $this->owner->joinWith('expirationModel expirationModel')
+			->orderBy('expirationModel.expire_at asc');
+	}
 }

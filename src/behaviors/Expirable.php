@@ -89,8 +89,8 @@ class Expirable extends Behavior {
 	}
 	
 	public function getExpireAt() {
-		if (isset($this->owner->expirationModel)) {
-			return $this->owner->expirationModel->expire_at;
+		if (isset($this->owner->expirationModel) && isset($this->owner->expirationModel->expire_at)) {
+			return new DateTime($this->owner->expirationModel->expire_at);
 		}
 	}
 
